@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="NF monogram icon">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#1d4565"/>
+      <stop offset="100%" stop-color="#14202b"/>
+    </linearGradient>
+  </defs>
+  <rect x="4" y="4" width="56" height="56" rx="16" fill="url(#bg)"/>
+  <rect x="5" y="5" width="54" height="54" rx="15" fill="none" stroke="#f4ecdc" stroke-opacity="0.2"/>
+  <path d="M18 46V18L34 40V18" fill="none" stroke="#f4ecdc" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M42 18V46M42 18H50M42 31H48" fill="none" stroke="#c79b55" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
