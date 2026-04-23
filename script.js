@@ -738,7 +738,7 @@ const syncFavicon = async () => {
   const isDark = colorSchemeQuery.matches;
   const defaultHref = "favicon.png";
 
-  if (!isDark) {
+  if (isDark) {
     faviconEl.setAttribute("href", defaultHref);
     return;
   }
