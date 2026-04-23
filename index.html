@@ -197,63 +197,107 @@
 
           <div class="interest-grid">
             <article class="interest-card reveal">
-              <figure class="interest-figure">
-                <div class="figure-shell">
-                  <img src="assets/fig1-lattice.svg" alt="Lattice metamaterial diagram" />
-                </div>
-                <figcaption data-i18n="interest1Caption">Fig. 1: Distorted lattice unit-cell concept</figcaption>
-              </figure>
-              <h3 data-i18n="interest1Title">Mechanical Metamaterials</h3>
-              <p data-i18n="interest1Text">
-                Lightweight lattice architectures, failure mechanisms, damage tolerance, and
-                structural design for aerospace applications.
-              </p>
+              <button class="interest-trigger" type="button" data-interest="interest1">
+                <figure class="interest-figure">
+                  <div class="figure-shell">
+                    <img src="assets/fig1-lattice.svg" alt="Lattice metamaterial diagram" />
+                  </div>
+                  <figcaption data-i18n="interest1Caption">Fig. 1: Distorted lattice unit-cell concept</figcaption>
+                </figure>
+                <h3 data-i18n="interest1Title">Mechanical Metamaterials</h3>
+                <p data-i18n="interest1Text">
+                  Lightweight lattice architectures, failure mechanisms, damage tolerance, and
+                  structural design for aerospace applications.
+                </p>
+              </button>
             </article>
 
             <article class="interest-card reveal" style="--delay: 80ms">
-              <figure class="interest-figure">
-                <div class="figure-shell">
-                  <img src="assets/fig2-fea.svg" alt="Finite-element contour plot" />
-                </div>
-                <figcaption data-i18n="interest2Caption">Fig. 2: Finite-element stress field abstraction</figcaption>
-              </figure>
-              <h3 data-i18n="interest2Title">Computational Mechanics</h3>
-              <p data-i18n="interest2Text">
-                Simulation-led design with Abaqus and ANSYS, adaptive sampling strategies, and the
-                numerical workflows needed for reliable structural analysis.
-              </p>
+              <button class="interest-trigger" type="button" data-interest="interest2">
+                <figure class="interest-figure">
+                  <div class="figure-shell">
+                    <img src="assets/fig2-fea.svg" alt="Finite-element contour plot" />
+                  </div>
+                  <figcaption data-i18n="interest2Caption">Fig. 2: Finite-element stress field abstraction</figcaption>
+                </figure>
+                <h3 data-i18n="interest2Title">Computational Mechanics</h3>
+                <p data-i18n="interest2Text">
+                  Simulation-led design with Abaqus and ANSYS, adaptive sampling strategies, and the
+                  numerical workflows needed for reliable structural analysis.
+                </p>
+              </button>
             </article>
 
             <article class="interest-card reveal" style="--delay: 160ms">
-              <figure class="interest-figure">
-                <div class="figure-shell">
-                  <img src="assets/fig3-ml.svg" alt="Machine learning workflow diagram" />
-                </div>
-                <figcaption data-i18n="interest3Caption">Fig. 3: Data-driven design loop</figcaption>
-              </figure>
-              <h3 data-i18n="interest3Title">Machine Learning for Design</h3>
-              <p data-i18n="interest3Text">
-                Surrogate modelling, physics-informed learning, graph-based representations, and
-                optimization pipelines for engineering decision-making.
-              </p>
+              <button class="interest-trigger" type="button" data-interest="interest3">
+                <figure class="interest-figure">
+                  <div class="figure-shell">
+                    <img src="assets/fig3-ml.svg" alt="Machine learning workflow diagram" />
+                  </div>
+                  <figcaption data-i18n="interest3Caption">Fig. 3: Data-driven design loop</figcaption>
+                </figure>
+                <h3 data-i18n="interest3Title">Machine Learning for Design</h3>
+                <p data-i18n="interest3Text">
+                  Surrogate modelling, physics-informed learning, graph-based representations, and
+                  optimization pipelines for engineering decision-making.
+                </p>
+              </button>
             </article>
 
             <article class="interest-card reveal" style="--delay: 240ms">
-              <figure class="interest-figure">
-                <div class="figure-shell">
-                  <img src="assets/fig4-aero.svg" alt="Airfoil and optimization sketch" />
-                </div>
-                <figcaption data-i18n="interest4Caption">Fig. 4: Aerodynamic and structural design studies</figcaption>
-              </figure>
-              <h3 data-i18n="interest4Title">Applied Aerospace Engineering</h3>
-              <p data-i18n="interest4Text">
-                Material efficiency, shape and topology optimization, and the broader mechanics
-                questions behind future flight structures.
-              </p>
+              <button class="interest-trigger" type="button" data-interest="interest4">
+                <figure class="interest-figure">
+                  <div class="figure-shell">
+                    <img src="assets/fig4-aero.svg" alt="Airfoil and optimization sketch" />
+                  </div>
+                  <figcaption data-i18n="interest4Caption">Fig. 4: Aerodynamic and structural design studies</figcaption>
+                </figure>
+                <h3 data-i18n="interest4Title">Applied Aerospace Engineering</h3>
+                <p data-i18n="interest4Text">
+                  Material efficiency, shape and topology optimization, and the broader mechanics
+                  questions behind future flight structures.
+                </p>
+              </button>
             </article>
           </div>
         </div>
       </section>
+
+      <div class="interest-modal" id="interestModal" hidden>
+        <button class="interest-modal-backdrop" type="button" data-modal-close tabindex="-1" aria-hidden="true"></button>
+        <div
+          class="interest-modal-dialog"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="interestModalTitle"
+          aria-describedby="interestModalDescription"
+        >
+          <button
+            class="interest-modal-close"
+            type="button"
+            data-modal-close
+            aria-label="Close detail"
+            data-i18n-aria-label="modalCloseLabel"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M6 6 18 18" />
+              <path d="m18 6-12 12" />
+            </svg>
+          </button>
+
+          <figure class="interest-modal-figure">
+            <div class="interest-modal-image-shell">
+              <img id="interestModalImage" src="" alt="" />
+            </div>
+            <figcaption class="interest-modal-caption" id="interestModalCaption"></figcaption>
+          </figure>
+
+          <div class="interest-modal-copy">
+            <h3 class="interest-modal-title" id="interestModalTitle"></h3>
+            <div class="interest-modal-description" id="interestModalDescription"></div>
+          </div>
+        </div>
+      </div>
 
       <section class="section" id="publications">
         <div class="section-inner">
@@ -512,6 +556,19 @@
                 <path d="m4 7 8 6 8-6" />
               </svg>
               n.forte@qmul.ac.uk
+            </a>
+            <a
+              class="outline-button outline-button-muted"
+              href="assets/Niccolo-Forte-Contact.vcf"
+              download
+              data-i18n="contactCardLabel"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 6h16v12H4z" />
+                <path d="M9 11a3 3 0 1 0 6 0 3 3 0 0 0-6 0Z" />
+                <path d="M7.5 16.5c1.15-1.4 2.68-2.1 4.5-2.1s3.35.7 4.5 2.1" />
+              </svg>
+              Contact Card
             </a>
             <a
               class="outline-button outline-button-muted"

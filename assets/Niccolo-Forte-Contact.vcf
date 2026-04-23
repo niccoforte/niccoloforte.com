@@ -1,0 +1,12 @@
+BEGIN:VCARD
+VERSION:3.0
+N:Forte;Niccolo;;;
+FN:Niccolò Forte
+TITLE:PhD Candidate in Aerospace Engineering
+ORG:Queen Mary University of London
+EMAIL;TYPE=INTERNET:n.forte@qmul.ac.uk
+URL:https://niccoloforte.com
+URL:https://www.linkedin.com/in/niccoloforte/
+URL:https://github.com/niccoforte
+NOTE:Aerospace engineering research, lattice metamaterials, computational mechanics, and machine learning.
+END:VCARD

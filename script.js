@@ -3,6 +3,11 @@ const siteNav = document.getElementById("siteNav");
 const yearEl = document.getElementById("year");
 const themeToggle = document.getElementById("themeToggle");
 const languageSelect = document.getElementById("languageSelect");
+const interestModal = document.getElementById("interestModal");
+const interestModalImage = document.getElementById("interestModalImage");
+const interestModalCaption = document.getElementById("interestModalCaption");
+const interestModalTitle = document.getElementById("interestModalTitle");
+const interestModalDescription = document.getElementById("interestModalDescription");
 const pageName = document.body.dataset.page || "home";
 const supportedLanguages = new Set(["en", "it"]);
 
@@ -50,6 +55,7 @@ const translations = {
         emailLabel: "Email",
         githubLabel: "GitHub",
         linkedinLabel: "LinkedIn",
+        modalCloseLabel: "Chiudi dettaglio",
       },
       themeLabels: {
         lightLabel: "Chiaro",
@@ -109,6 +115,7 @@ const translations = {
         contactTitle: "Contatti",
         contactIntro:
           "Sono sempre felice di sentire persone che lavorano su meccanica strutturale, ricerca aerospaziale, metamateriali, software ingegneristico o insegnamento tecnico ben fatto.",
+        contactCardLabel: "Scheda contatto",
         cvLabel: "Curriculum Vitae",
       },
       html: {
@@ -372,6 +379,114 @@ const translations = {
 
 let activeLanguage = "en";
 let syncThemeToggle = () => {};
+let activeInterestId = null;
+let lastInterestTrigger = null;
+
+const interestDetails = {
+  en: {
+    interest1: `
+      <p>
+        My main research activity centres on architected lattice materials that remain lightweight
+        while becoming more damage tolerant, robust, and useful in real aerospace structures. I am
+        especially interested in how local geometric distortion changes stiffness, failure
+        progression, and post-damage response.
+      </p>
+      <p>
+        That work combines structural mechanics, manufacturability questions, and design strategy:
+        not just whether a lattice is efficient in theory, but whether it can become a dependable
+        structural concept for future air transportation.
+      </p>
+    `,
+    interest2: `
+      <p>
+        Computational mechanics is the main toolset behind how I test ideas. I use finite-element
+        modelling to compare architectures, study stress redistribution, and evaluate how design
+        decisions behave under realistic loading assumptions.
+      </p>
+      <p>
+        I am particularly interested in adaptive workflows that make simulation more trustworthy:
+        better meshing choices, smarter sampling, and numerical pipelines that reveal meaningful
+        structural behaviour instead of producing results that only look polished.
+      </p>
+    `,
+    interest3: `
+      <p>
+        I use machine learning where it helps reduce design cost, accelerate exploration, or expose
+        patterns that would be hard to see from simulation alone. That includes surrogate models,
+        optimization loops, and data-driven representations of complex structural systems.
+      </p>
+      <p>
+        The goal is not to replace engineering judgement, but to support it: using learning-based
+        tools to navigate large design spaces while keeping the mechanics and physics legible.
+      </p>
+    `,
+    interest4: `
+      <p>
+        The broader motivation behind my work is applied aerospace engineering: how future flight
+        structures can become lighter, more efficient, and more resilient without sacrificing
+        safety or practical performance.
+      </p>
+      <p>
+        That means thinking across scales, from local unit-cell behaviour to full-system design,
+        and keeping an eye on the real engineering trade-offs between weight, damage tolerance,
+        manufacturability, and performance.
+      </p>
+    `,
+  },
+  it: {
+    interest1: `
+      <p>
+        La mia principale attività di ricerca riguarda materiali reticolari architettati che
+        restano leggeri ma diventano anche più tolleranti al danno, robusti e utili in strutture
+        aerospaziali reali. Mi interessa soprattutto capire come la distorsione geometrica locale
+        cambi rigidezza, progressione del cedimento e risposta dopo il danno.
+      </p>
+      <p>
+        Questo lavoro unisce meccanica strutturale, temi di fabbricabilità e strategia di
+        progettazione: non solo se un reticolo sia efficiente in teoria, ma se possa diventare un
+        concetto strutturale affidabile per il trasporto aereo del futuro.
+      </p>
+    `,
+    interest2: `
+      <p>
+        La meccanica computazionale è il principale insieme di strumenti con cui verifico le idee.
+        Uso la modellazione agli elementi finiti per confrontare architetture, studiare la
+        ridistribuzione degli sforzi e valutare come le scelte progettuali si comportino sotto
+        ipotesi di carico realistiche.
+      </p>
+      <p>
+        Mi interessano in particolare i workflow adattivi che rendono la simulazione più
+        affidabile: migliori scelte di mesh, campionamento più intelligente e pipeline numeriche
+        che mostrino un comportamento strutturale davvero significativo, invece di produrre
+        risultati solo apparentemente ben rifiniti.
+      </p>
+    `,
+    interest3: `
+      <p>
+        Uso il machine learning quando aiuta a ridurre il costo della progettazione, accelerare
+        l'esplorazione o far emergere pattern difficili da osservare con la sola simulazione. Questo
+        include modelli surrogati, cicli di ottimizzazione e rappresentazioni guidate dai dati di
+        sistemi strutturali complessi.
+      </p>
+      <p>
+        L'obiettivo non è sostituire il giudizio ingegneristico, ma supportarlo: usare strumenti di
+        apprendimento per navigare grandi spazi di progetto mantenendo leggibili meccanica e fisica.
+      </p>
+    `,
+    interest4: `
+      <p>
+        La motivazione più ampia del mio lavoro è l'ingegneria aerospaziale applicata: capire come
+        le strutture del volo del futuro possano diventare più leggere, efficienti e resilienti
+        senza sacrificare sicurezza o prestazioni pratiche.
+      </p>
+      <p>
+        Questo significa ragionare su più scale, dal comportamento locale della cella unitaria fino
+        alla progettazione dell'intero sistema, mantenendo sempre presenti i veri compromessi
+        ingegneristici tra peso, tolleranza al danno, fabbricabilità e prestazioni.
+      </p>
+    `,
+  },
+};
 
 const getRequestedLanguage = () => {
   const searchParams = new URLSearchParams(window.location.search);
@@ -494,6 +609,75 @@ const restoreEnglishContent = () => {
   }
 };
 
+const renderInterestModal = (interestId) => {
+  if (
+    !interestModal ||
+    !interestModalImage ||
+    !interestModalCaption ||
+    !interestModalTitle ||
+    !interestModalDescription
+  ) {
+    return;
+  }
+
+  const trigger = document.querySelector(`.interest-trigger[data-interest="${interestId}"]`);
+  if (!trigger) {
+    return;
+  }
+
+  const cardImage = trigger.querySelector("img");
+  const cardCaption = trigger.querySelector("figcaption");
+  const cardTitle = trigger.querySelector("h3");
+  const detailCopy =
+    interestDetails[activeLanguage]?.[interestId] || interestDetails.en?.[interestId] || "";
+
+  if (cardImage) {
+    interestModalImage.src = cardImage.getAttribute("src") || "";
+    interestModalImage.alt = cardImage.getAttribute("alt") || "";
+  }
+
+  if (cardCaption) {
+    interestModalCaption.textContent = cardCaption.textContent || "";
+  }
+
+  if (cardTitle) {
+    interestModalTitle.textContent = cardTitle.textContent || "";
+  }
+
+  interestModalDescription.innerHTML = detailCopy;
+};
+
+const openInterestModal = (interestId, trigger) => {
+  if (!interestModal) {
+    return;
+  }
+
+  activeInterestId = interestId;
+  lastInterestTrigger = trigger || null;
+  renderInterestModal(interestId);
+  interestModal.hidden = false;
+  document.body.classList.add("modal-open");
+  const closeButton = interestModal.querySelector(".interest-modal-close");
+  if (closeButton) {
+    closeButton.focus();
+  }
+};
+
+const closeInterestModal = () => {
+  if (!interestModal || interestModal.hidden) {
+    return;
+  }
+
+  interestModal.hidden = true;
+  document.body.classList.remove("modal-open");
+  activeInterestId = null;
+
+  if (lastInterestTrigger) {
+    lastInterestTrigger.focus();
+    lastInterestTrigger = null;
+  }
+};
+
 const applyLanguage = (language) => {
   activeLanguage = supportedLanguages.has(language) ? language : "en";
   restoreEnglishContent();
@@ -567,6 +751,10 @@ const applyLanguage = (language) => {
     syncThemeToggle();
   }
 
+  if (activeInterestId) {
+    renderInterestModal(activeInterestId);
+  }
+
   updateLocalizedLinks(activeLanguage);
   updateLanguageSwitcher(activeLanguage);
   syncCanonicalLanguageUrl(activeLanguage);
@@ -610,6 +798,27 @@ if (languageSelect) {
   languageSelect.addEventListener("change", (event) => {
     const nextLanguage = supportedLanguages.has(event.target.value) ? event.target.value : "en";
     applyLanguage(nextLanguage);
+  });
+}
+
+if (interestModal) {
+  document.querySelectorAll(".interest-trigger").forEach((trigger) => {
+    trigger.addEventListener("click", () => {
+      const interestId = trigger.dataset.interest;
+      if (interestId) {
+        openInterestModal(interestId, trigger);
+      }
+    });
+  });
+
+  interestModal.querySelectorAll("[data-modal-close]").forEach((element) => {
+    element.addEventListener("click", closeInterestModal);
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      closeInterestModal();
+    }
   });
 }
 
