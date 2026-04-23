@@ -587,24 +587,12 @@ if (yearEl) {
 if (themeToggle) {
   syncThemeToggle = () => {
     const isDark = document.body.classList.contains("dark-mode");
-    const lightLabel = themeToggle.dataset.lightLabel || "Light";
-    const darkLabel = themeToggle.dataset.darkLabel || "Dark";
     const lightTitle = themeToggle.dataset.lightTitle || "Switch to light mode";
     const darkTitle = themeToggle.dataset.darkTitle || "Switch to dark mode";
-    const sunEl = themeToggle.querySelector(".theme-toggle-sun");
-    const moonEl = themeToggle.querySelector(".theme-toggle-moon");
 
     themeToggle.setAttribute("aria-pressed", String(isDark));
     themeToggle.setAttribute("aria-label", isDark ? lightTitle : darkTitle);
     themeToggle.setAttribute("title", isDark ? lightTitle : darkTitle);
-
-    if (sunEl) {
-      sunEl.textContent = lightLabel;
-    }
-
-    if (moonEl) {
-      moonEl.textContent = darkLabel;
-    }
   };
 
   syncThemeToggle();
