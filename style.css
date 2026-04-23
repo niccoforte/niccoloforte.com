@@ -115,10 +115,11 @@ body.dark-mode .site-header {
   flex: 0 0 auto;
   border-radius: 0.2rem;
   transition: filter var(--transition);
+  filter: invert(1) brightness(1.05);
 }
 
 body.dark-mode .site-mark {
-  filter: invert(1) brightness(1.05);
+  filter: none;
 }
 
 .site-nav {
