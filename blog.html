@@ -3,16 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Niccolò Forte | Blog</title>
+    <title>Niccolo Forte | Blog</title>
     <meta
       name="description"
-      content="Blog page for Niccolò Forte: research notes, simulation workflows, and engineering reflections."
+      content="Writing by Niccolo Forte on lattice metamaterials, simulation workflows, engineering judgement, and technical teaching."
     />
-    <meta name="theme-color" content="#f6f1e7" />
+    <meta name="theme-color" content="#f6f2ea" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&family=Inter:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
@@ -20,21 +20,15 @@
   </head>
   <body>
     <header class="site-header">
-      <div class="shell topbar">
-        <a class="brand" href="index.html" aria-label="Niccolò Forte home">
-          <span class="brand-mark" aria-hidden="true">NF</span>
-          <span class="brand-copy">
-            <strong>Niccolò Forte</strong>
-            <span>Aeronautical engineering researcher</span>
-          </span>
-        </a>
+      <div class="frame nav-frame">
+        <a class="site-name" href="index.html">Niccolo Forte</a>
 
         <button
           class="nav-toggle"
           id="navToggle"
           aria-expanded="false"
           aria-controls="siteNav"
-          aria-label="Open menu"
+          aria-label="Toggle menu"
         >
           <span></span>
           <span></span>
@@ -42,104 +36,86 @@
         </button>
 
         <nav class="site-nav" id="siteNav">
-          <a href="index.html#about">About</a>
-          <a href="index.html#research">Research</a>
-          <a href="index.html#experience">Experience</a>
-          <a href="index.html#education">Education</a>
-          <a href="index.html#contact">Contact</a>
+          <a href="index.html">Home</a>
           <a href="blog.html" aria-current="page">Blog</a>
+          <a href="index.html#contact">Contact</a>
         </nav>
       </div>
     </header>
 
-    <main id="top">
-      <section class="hero-band compact-hero">
-        <div class="shell blog-hero-layout">
-          <div class="hero-copy reveal">
-            <p class="eyebrow">Blog</p>
-            <h1>Research notes, simulation workflows, and concise engineering writing.</h1>
-            <p class="hero-text">
-              This page is designed as a lightweight publishing space for technical reflections,
-              project notes, and practical observations from research and teaching.
-            </p>
-            <div class="hero-actions">
-              <a class="button button-primary" href="index.html">Return home</a>
-              <a class="button button-secondary" href="assets/Niccolo-Forte-CV.pdf" target="_blank" rel="noreferrer">Open CV</a>
-            </div>
-          </div>
-
-          <aside class="blog-side-note reveal" style="--delay: 120ms">
-            <p class="eyebrow">Intent</p>
-            <h2>Clear, technically grounded, and useful.</h2>
-            <p>
-              Over time this will become a small archive of writing on mechanical metamaterials,
-              modelling choices, machine learning workflows, and engineering education.
-            </p>
-          </aside>
+    <main>
+      <section class="blog-hero">
+        <div class="section-inner narrow reveal">
+          <p class="hero-role">Blog</p>
+          <h1 class="blog-title">Research Notes</h1>
+          <p class="blog-subtitle">
+            Writing on metamaterials, computation, modelling practice, and the craft of technical
+            explanation.
+          </p>
         </div>
       </section>
 
-      <section class="section-band">
-        <div class="shell">
-          <div class="section-heading reveal">
-            <p class="eyebrow">Planned sections</p>
-            <h2>Early structure for future posts.</h2>
+      <section class="section blog-section">
+        <div class="section-inner narrow">
+          <div class="tag-row reveal">
+            <span class="tag">Research</span>
+            <span class="tag tag-muted">Simulation</span>
+            <span class="tag tag-muted">Teaching</span>
+            <span class="tag tag-muted">In progress</span>
           </div>
 
-          <div class="writing-grid reveal" style="--delay: 80ms">
-            <article class="info-card">
-              <span class="card-kicker">Series A</span>
-              <h3>Mechanical metamaterials</h3>
+          <div class="timeline-list blog-list">
+            <article class="timeline-item reveal">
+              <div class="tag-row">
+                <span class="tag">Planned</span>
+                <span class="tag tag-muted">Research</span>
+              </div>
+              <h2 class="blog-entry-title">What changes when lattice disorder becomes a design variable</h2>
               <p>
-                Notes on lattice architecture, structural response, disorder, and lightweight
-                system design.
+                A note on why geometric irregularity can improve performance, what kind of disorder
+                is useful, and how to think about quasi-distorted lattices without turning them into
+                vague aesthetic objects.
               </p>
+              <span class="blog-more">Coming soon</span>
             </article>
-            <article class="info-card">
-              <span class="card-kicker">Series B</span>
-              <h3>Computation and modelling</h3>
-              <p>
-                Observations on simulation tools, reproducible workflows, and modelling judgment.
-              </p>
-            </article>
-            <article class="info-card">
-              <span class="card-kicker">Series C</span>
-              <h3>Teaching and communication</h3>
-              <p>
-                Short reflections on explaining complex technical material clearly and usefully.
-              </p>
-            </article>
-          </div>
-        </div>
-      </section>
 
-      <section class="section-band alternate-band">
-        <div class="shell archive-layout">
-          <div class="section-heading reveal">
-            <p class="eyebrow">Pinned note</p>
-            <h2>A home for compact writing with a research backbone.</h2>
-          </div>
-          <div class="overview-copy reveal" style="--delay: 80ms">
-            <p>
-              I want this space to stay straightforward: readable essays, useful diagrams when
-              needed, and enough technical detail to be worth revisiting.
-            </p>
-            <p>
-              Posts may range from conference reflections and simulation habits to broader notes
-              on engineering method, machine learning, and interdisciplinary practice.
-            </p>
+            <article class="timeline-item reveal" style="--delay: 80ms">
+              <div class="tag-row">
+                <span class="tag">Planned</span>
+                <span class="tag tag-muted">Simulation</span>
+              </div>
+              <h2 class="blog-entry-title">Making finite-element workflows easier to trust</h2>
+              <p>
+                Thoughts on meshes, boundary conditions, adaptive sampling, and the habits that make
+                simulation work feel less like ritual and more like engineering.
+              </p>
+              <span class="blog-more">Coming soon</span>
+            </article>
+
+            <article class="timeline-item reveal" style="--delay: 160ms">
+              <div class="tag-row">
+                <span class="tag">Planned</span>
+                <span class="tag tag-muted">Teaching</span>
+              </div>
+              <h2 class="blog-entry-title">Teaching simulation without making it mysterious</h2>
+              <p>
+                Reflections from tutorials and labs on how to explain modelling decisions clearly,
+                while still respecting the complexity of the underlying mechanics.
+              </p>
+              <span class="blog-more">Coming soon</span>
+            </article>
           </div>
         </div>
       </section>
     </main>
 
     <footer class="site-footer">
-      <div class="shell footer-bar">
-        <p>© <span id="year"></span> Niccolò Forte</p>
+      <div class="section-inner footer-inner">
         <div class="footer-links">
           <a href="index.html">Home</a>
-          <a href="#top">Back to top</a>
+          <a href="assets/Niccolo-Forte-CV.pdf" target="_blank" rel="noreferrer">CV</a>
         </div>
+        <p>- Niccolo Forte - <span id="year"></span> -</p>
       </div>
     </footer>
 

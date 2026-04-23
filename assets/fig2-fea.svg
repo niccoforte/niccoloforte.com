@@ -1,0 +1,25 @@
+<svg width="320" height="180" viewBox="0 0 320 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="320" height="180" rx="10" fill="#F6F2EA"/>
+  <defs>
+    <linearGradient id="stress" x1="66" y1="48" x2="250" y2="132" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#2E3A46"/>
+      <stop offset="0.5" stop-color="#7C6C53"/>
+      <stop offset="1" stop-color="#C18A57"/>
+    </linearGradient>
+  </defs>
+  <path d="M72 46H230L250 92L210 136H86L66 88L72 46Z" fill="url(#stress)" fill-opacity="0.92"/>
+  <g stroke="#F6F2EA" stroke-opacity="0.7" stroke-width="2">
+    <path d="M78 62H220"/>
+    <path d="M72 86H240"/>
+    <path d="M88 112H220"/>
+    <path d="M102 48L86 136"/>
+    <path d="M144 46L130 136"/>
+    <path d="M186 46L176 136"/>
+    <path d="M224 52L214 128"/>
+  </g>
+  <g stroke="#8E887D" stroke-width="3" stroke-linecap="round">
+    <path d="M268 54V126"/>
+    <path d="M260 60L268 54L276 60"/>
+    <path d="M260 120L268 126L276 120"/>
+  </g>
+</svg>
