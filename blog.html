@@ -6,10 +6,9 @@
     <title>Niccolò Forte | Blog</title>
     <meta
       name="description"
-      content="Blog page for Niccolò Forte — research notes, simulation workflows, and engineering reflections."
+      content="Blog page for Niccolò Forte: research notes, simulation workflows, and engineering reflections."
     />
-    <meta name="theme-color" content="#f4ecdc" />
-
+    <meta name="theme-color" content="#f6f1e7" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -20,14 +19,14 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="page-noise" aria-hidden="true"></div>
-    <div class="page-grid" aria-hidden="true"></div>
-
     <header class="site-header">
-      <div class="container nav-wrap">
-        <a class="brand" href="index.html">
+      <div class="shell topbar">
+        <a class="brand" href="index.html" aria-label="Niccolò Forte home">
           <span class="brand-mark" aria-hidden="true">NF</span>
-          <span class="brand-text">Niccolò Forte</span>
+          <span class="brand-copy">
+            <strong>Niccolò Forte</strong>
+            <span>Aeronautical engineering researcher</span>
+          </span>
         </a>
 
         <button
@@ -44,123 +43,98 @@
 
         <nav class="site-nav" id="siteNav">
           <a href="index.html#about">About</a>
-          <a href="index.html#focus">Focus</a>
+          <a href="index.html#research">Research</a>
           <a href="index.html#experience">Experience</a>
           <a href="index.html#education">Education</a>
-          <a href="index.html#skills">Skills</a>
-          <a href="blog.html" aria-current="page">Blog</a>
           <a href="index.html#contact">Contact</a>
+          <a href="blog.html" aria-current="page">Blog</a>
         </nav>
       </div>
     </header>
 
-    <main>
-      <section class="section first-section blog-hero">
-        <div class="container blog-hero-grid">
-          <div class="reveal">
-            <p class="kicker">Blog</p>
-            <h1>Research notes, simulation workflows, and technical reflections.</h1>
-            <p class="lead">
-              This page is designed as a home for concise writing on mechanical metamaterials,
-              structural mechanics, machine learning workflows, teaching, and computational practice.
+    <main id="top">
+      <section class="hero-band compact-hero">
+        <div class="shell blog-hero-layout">
+          <div class="hero-copy reveal">
+            <p class="eyebrow">Blog</p>
+            <h1>Research notes, simulation workflows, and concise engineering writing.</h1>
+            <p class="hero-text">
+              This page is designed as a lightweight publishing space for technical reflections,
+              project notes, and practical observations from research and teaching.
             </p>
+            <div class="hero-actions">
+              <a class="button button-primary" href="index.html">Return home</a>
+              <a class="button button-secondary" href="assets/Niccolo-Forte-CV.pdf" target="_blank" rel="noreferrer">Open CV</a>
+            </div>
           </div>
 
-          <aside class="glass-card reveal" style="--delay: 90ms">
-            <p class="mini-label">Status</p>
-            <h3>Ready to publish</h3>
+          <aside class="blog-side-note reveal" style="--delay: 120ms">
+            <p class="eyebrow">Intent</p>
+            <h2>Clear, technically grounded, and useful.</h2>
             <p>
-              The layout is in place, with space for future essays, technical notes, project logs,
-              and research updates as the site evolves.
+              Over time this will become a small archive of writing on mechanical metamaterials,
+              modelling choices, machine learning workflows, and engineering education.
             </p>
           </aside>
         </div>
       </section>
 
-      <section class="section soft-band">
-        <div class="container blog-columns">
-          <article class="post-card large reveal">
-            <p class="mini-label">Pinned note</p>
-            <h2>A place for concise engineering writing.</h2>
-            <p>
-              The goal of this page is to keep writing practical, clear, and technically grounded.
-              Over time it can grow into a lightweight archive of short posts on lattice structures,
-              simulation-led research, code-driven workflows, and lessons learned from teaching and tutoring.
-            </p>
-            <a class="text-link" href="index.html">Return to homepage</a>
-          </article>
+      <section class="section-band">
+        <div class="shell">
+          <div class="section-heading reveal">
+            <p class="eyebrow">Planned sections</p>
+            <h2>Early structure for future posts.</h2>
+          </div>
 
-          <div class="blog-side-stack">
-            <article class="post-card reveal" style="--delay: 80ms">
-              <p class="mini-label">Planned series</p>
-              <h3>Research notes</h3>
-              <p>Metamaterials, fracture, structural response, and data-driven design ideas.</p>
+          <div class="writing-grid reveal" style="--delay: 80ms">
+            <article class="info-card">
+              <span class="card-kicker">Series A</span>
+              <h3>Mechanical metamaterials</h3>
+              <p>
+                Notes on lattice architecture, structural response, disorder, and lightweight
+                system design.
+              </p>
             </article>
-            <article class="post-card reveal" style="--delay: 140ms">
-              <p class="mini-label">Planned series</p>
-              <h3>Simulation workflows</h3>
-              <p>Abaqus, CAE habits, modelling choices, and reproducible engineering workflows.</p>
+            <article class="info-card">
+              <span class="card-kicker">Series B</span>
+              <h3>Computation and modelling</h3>
+              <p>
+                Observations on simulation tools, reproducible workflows, and modelling judgment.
+              </p>
+            </article>
+            <article class="info-card">
+              <span class="card-kicker">Series C</span>
+              <h3>Teaching and communication</h3>
+              <p>
+                Short reflections on explaining complex technical material clearly and usefully.
+              </p>
             </article>
           </div>
         </div>
       </section>
 
-      <section class="section">
-        <div class="container section-intro reveal">
-          <p class="kicker">Archive structure</p>
-          <h2>Initial categories for future posts.</h2>
-        </div>
-
-        <div class="container card-grid three-up">
-          <article class="feature-card reveal">
-            <div class="feature-icon">A</div>
-            <h3>Mechanical metamaterials</h3>
-            <p>
-              Posts centred on lattice architectures, structural mechanics, and design questions in lightweight systems.
-            </p>
-          </article>
-          <article class="feature-card reveal" style="--delay: 80ms">
-            <div class="feature-icon">B</div>
-            <h3>Computation &amp; modelling</h3>
-            <p>
-              Notes on simulation tools, engineering software, workflow design, and modelling judgement.
-            </p>
-          </article>
-          <article class="feature-card reveal" style="--delay: 160ms">
-            <div class="feature-icon">C</div>
-            <h3>Teaching &amp; communication</h3>
-            <p>
-              Short reflections on explaining complex ideas clearly across engineering and quantitative subjects.
-            </p>
-          </article>
-        </div>
-      </section>
-
-      <section class="section soft-band">
-        <div class="container contact-box reveal">
-          <div>
-            <p class="kicker">Next step</p>
-            <h2>Use this page as a simple publishing space.</h2>
-            <p>
-              You can duplicate one of the cards above into a full post later, or add individual HTML pages for longer entries.
-            </p>
+      <section class="section-band alternate-band">
+        <div class="shell archive-layout">
+          <div class="section-heading reveal">
+            <p class="eyebrow">Pinned note</p>
+            <h2>A home for compact writing with a research backbone.</h2>
           </div>
-          <div class="contact-links single-column">
-            <a class="contact-link" href="assets/Niccolo-Forte-CV.pdf" target="_blank" rel="noreferrer">
-              <span class="contact-label">CV</span>
-              <strong>Open PDF</strong>
-            </a>
-            <a class="contact-link" href="https://www.linkedin.com/in/niccoloforte/" target="_blank" rel="noreferrer">
-              <span class="contact-label">LinkedIn</span>
-              <strong>Professional profile</strong>
-            </a>
+          <div class="overview-copy reveal" style="--delay: 80ms">
+            <p>
+              I want this space to stay straightforward: readable essays, useful diagrams when
+              needed, and enough technical detail to be worth revisiting.
+            </p>
+            <p>
+              Posts may range from conference reflections and simulation habits to broader notes
+              on engineering method, machine learning, and interdisciplinary practice.
+            </p>
           </div>
         </div>
       </section>
     </main>
 
     <footer class="site-footer">
-      <div class="container footer-wrap">
+      <div class="shell footer-bar">
         <p>© <span id="year"></span> Niccolò Forte</p>
         <div class="footer-links">
           <a href="index.html">Home</a>

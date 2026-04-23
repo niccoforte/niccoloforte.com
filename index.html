@@ -3,21 +3,19 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Niccolò Forte | Engineering, Simulation & Machine Learning</title>
+    <title>Niccolò Forte | Aeronautical Engineering Researcher</title>
     <meta
       name="description"
-      content="Personal website of Niccolò Forte — aerospace engineering PhD researcher focused on lattice metamaterials, computational mechanics, and machine learning."
+      content="Personal website of Niccolò Forte, a PhD researcher in aeronautical engineering working on lattice metamaterials, computational mechanics, and machine learning."
     />
-    <meta name="theme-color" content="#f4ecdc" />
-
-    <meta property="og:title" content="Niccolò Forte | Engineering, Simulation & Machine Learning" />
+    <meta name="theme-color" content="#f6f1e7" />
+    <meta property="og:title" content="Niccolò Forte | Aeronautical Engineering Researcher" />
     <meta
       property="og:description"
-      content="Research, experience, teaching, and writing by Niccolò Forte."
+      content="Research, teaching, experience, and writing by Niccolò Forte."
     />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://niccoloforte.com" />
-
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -28,14 +26,14 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="page-noise" aria-hidden="true"></div>
-    <div class="page-grid" aria-hidden="true"></div>
-
     <header class="site-header">
-      <div class="container nav-wrap">
-        <a class="brand" href="index.html">
+      <div class="shell topbar">
+        <a class="brand" href="#top" aria-label="Niccolò Forte home">
           <span class="brand-mark" aria-hidden="true">NF</span>
-          <span class="brand-text">Niccolò Forte</span>
+          <span class="brand-copy">
+            <strong>Niccolò Forte</strong>
+            <span>Aeronautical engineering researcher</span>
+          </span>
         </a>
 
         <button
@@ -52,386 +50,401 @@
 
         <nav class="site-nav" id="siteNav">
           <a href="#about">About</a>
-          <a href="#focus">Focus</a>
+          <a href="#research">Research</a>
           <a href="#experience">Experience</a>
           <a href="#education">Education</a>
-          <a href="#skills">Skills</a>
-          <a href="blog.html">Blog</a>
+          <a href="#writing">Writing</a>
           <a href="#contact">Contact</a>
+          <a href="blog.html">Blog</a>
         </nav>
       </div>
     </header>
 
-    <main>
-      <section class="hero section first-section" id="top">
-        <div class="container hero-grid">
+    <main id="top">
+      <section class="hero-band">
+        <div class="shell hero-layout">
           <div class="hero-copy reveal">
-            <p class="kicker">Personal website · Engineering + data science</p>
-            <h1>Engineering lighter, smarter structures with simulation and machine learning.</h1>
-            <p class="lead">
-              I am Niccolò Forte, a PhD candidate in Aerospace Engineering at Queen Mary University of London.
-              My work sits between structural mechanics, lattice metamaterials, computational modelling,
-              and data-driven design.
+            <p class="eyebrow">London, UK · QMUL · Structures, simulation, machine learning</p>
+            <h1>Designing lighter and more resilient aerospace structures through computation.</h1>
+            <p class="hero-text">
+              I am Niccolò Forte, a PhD researcher in Aeronautical Engineering at Queen Mary
+              University of London. My work focuses on distorted lattice metamaterials,
+              finite-element simulation, and data-driven design methods for future air
+              transportation.
             </p>
-
             <div class="hero-actions">
-              <a class="btn btn-primary" href="assets/Niccolo-Forte-CV.pdf" target="_blank" rel="noreferrer">Open CV</a>
-              <a class="btn btn-secondary" href="blog.html">Visit blog</a>
-              <a class="btn btn-secondary" href="#contact">Get in touch</a>
+              <a class="button button-primary" href="assets/Niccolo-Forte-CV.pdf" target="_blank" rel="noreferrer">Open CV</a>
+              <a class="button button-secondary" href="#research">View research</a>
+              <a class="button button-secondary" href="blog.html">Visit blog</a>
             </div>
-
-            <ul class="hero-tags" aria-label="Quick facts">
-              <li>QMUL PhD Researcher</li>
-              <li>Mechanical Engineering BEng, First Class</li>
-              <li>London, UK</li>
-            </ul>
           </div>
 
-          <aside class="hero-panel reveal" style="--delay: 120ms">
-            <div class="hero-panel-top">
-              <p class="panel-label">Current lens</p>
-              <span class="panel-chip">Aerospace · structures · ML</span>
+          <div class="hero-visual reveal" style="--delay: 120ms">
+            <div class="hero-visual-copy">
+              <p class="eyebrow">Current work</p>
+              <h2>Damage-tolerant ultralightweight mechanical metamaterials.</h2>
+              <p>
+                Researching quasi-distorted lattice systems, adaptive FEA sampling, and
+                machine-learning-guided optimization for structural performance.
+              </p>
             </div>
 
-            <div class="lattice-figure" aria-hidden="true">
-              <svg viewBox="0 0 520 320" role="img" aria-label="Abstract lattice diagram">
+            <div class="lattice-media" aria-hidden="true">
+              <svg viewBox="0 0 820 560" role="img" aria-label="Abstract lattice-inspired structure">
                 <defs>
-                  <linearGradient id="beam" x1="0%" x2="100%" y1="0%" y2="0%">
-                    <stop offset="0%" stop-color="#b78d40" />
-                    <stop offset="100%" stop-color="#1a3854" />
+                  <linearGradient id="beamLine" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#c09343" />
+                    <stop offset="100%" stop-color="#22435f" />
                   </linearGradient>
+                  <radialGradient id="beamGlow" cx="50%" cy="50%" r="65%">
+                    <stop offset="0%" stop-color="rgba(192,147,67,0.20)" />
+                    <stop offset="100%" stop-color="rgba(34,67,95,0.02)" />
+                  </radialGradient>
                 </defs>
-                <g stroke="url(#beam)" stroke-width="4.5" fill="none" stroke-linecap="round">
-                  <path d="M48 240 L148 160 L248 220 L348 120 L454 182" />
-                  <path d="M78 110 L148 160 L218 92 L288 162 L348 120 L418 82" />
-                  <path d="M48 240 L118 82 L218 92 L248 220 L348 120 L418 82 L454 182" />
-                  <path d="M148 160 L248 220" />
-                  <path d="M148 160 L288 162" />
-                  <path d="M248 220 L288 162" />
-                  <path d="M288 162 L418 82" />
+                <rect x="0" y="0" width="820" height="560" fill="#f3eee5" />
+                <rect x="36" y="36" width="748" height="488" rx="14" fill="url(#beamGlow)" />
+                <g stroke="url(#beamLine)" stroke-width="5.5" fill="none" stroke-linecap="round">
+                  <path d="M84 398 L194 278 L328 362 L470 210 L640 294 L736 188" />
+                  <path d="M118 192 L194 278 L286 164 L388 258 L470 210 L566 134 L736 188" />
+                  <path d="M84 398 L154 174 L286 164 L328 362 L470 210 L566 134 L640 294" />
+                  <path d="M194 278 L388 258" />
+                  <path d="M328 362 L388 258" />
+                  <path d="M388 258 L566 134" />
+                  <path d="M194 278 L286 164" />
+                  <path d="M470 210 L640 294" />
                 </g>
-                <g fill="#173857" stroke="#f4ecdc" stroke-width="2">
-                  <circle cx="48" cy="240" r="10" />
-                  <circle cx="78" cy="110" r="10" />
-                  <circle cx="118" cy="82" r="10" />
-                  <circle cx="148" cy="160" r="10" />
-                  <circle cx="218" cy="92" r="10" />
-                  <circle cx="248" cy="220" r="10" />
-                  <circle cx="288" cy="162" r="10" />
-                  <circle cx="348" cy="120" r="10" />
-                  <circle cx="418" cy="82" r="10" />
-                  <circle cx="454" cy="182" r="10" />
+                <g fill="#16364f" stroke="#f3eee5" stroke-width="5">
+                  <circle cx="84" cy="398" r="16" />
+                  <circle cx="118" cy="192" r="16" />
+                  <circle cx="154" cy="174" r="16" />
+                  <circle cx="194" cy="278" r="16" />
+                  <circle cx="286" cy="164" r="16" />
+                  <circle cx="328" cy="362" r="16" />
+                  <circle cx="388" cy="258" r="16" />
+                  <circle cx="470" cy="210" r="16" />
+                  <circle cx="566" cy="134" r="16" />
+                  <circle cx="640" cy="294" r="16" />
+                  <circle cx="736" cy="188" r="16" />
                 </g>
               </svg>
             </div>
 
-            <div class="hero-metrics">
+            <div class="stat-strip">
               <div>
-                <span class="metric-label">Research</span>
-                <strong>Mechanical metamaterials</strong>
+                <span class="stat-label">Methods</span>
+                <strong>FEA · Python · MATLAB</strong>
               </div>
               <div>
-                <span class="metric-label">Methods</span>
-                <strong>FEA, CAE, ML workflows</strong>
+                <span class="stat-label">Theme</span>
+                <strong>Metamaterials and optimization</strong>
               </div>
               <div>
-                <span class="metric-label">Context</span>
-                <strong>Teaching, data science, web development</strong>
+                <span class="stat-label">Context</span>
+                <strong>Research, teaching, engineering</strong>
               </div>
             </div>
-          </aside>
+          </div>
         </div>
       </section>
 
-      <section class="section" id="about">
-        <div class="container section-grid split-grid">
-          <div class="section-intro reveal">
-            <p class="kicker">About</p>
-            <h2>International background, technical mindset, practical execution.</h2>
+      <section class="section-band" id="about">
+        <div class="shell overview-grid">
+          <div class="section-heading reveal">
+            <p class="eyebrow">About</p>
+            <h2>An international background shaped by engineering, analysis, and curiosity.</h2>
           </div>
-
-          <div class="copy-stack reveal" style="--delay: 80ms">
+          <div class="overview-copy reveal" style="--delay: 80ms">
             <p>
-              Having lived and studied across Washington DC, Jerusalem, Rome, Brussels, and London,
-              I have developed an adaptable and outward-looking approach to research, collaboration, and communication.
+              Growing up across Washington DC, Jerusalem, Rome, Brussels, and London gave me a
+              naturally outward-looking approach to research and collaboration. I am especially
+              drawn to work that sits between rigorous mechanics, computational tools, and
+              practical engineering use.
             </p>
             <p>
-              Alongside doctoral research, I teach across engineering modules and have worked in data science,
-              software testing, tutoring, and digital/web development. I am especially interested in work that combines
-              rigorous analysis with useful computational tools.
+              Alongside my doctoral work, I teach across undergraduate and postgraduate
+              engineering modules and have worked in data science, software testing, tutoring,
+              and web development. That mix has made me comfortable moving between technical
+              depth and clear communication.
             </p>
           </div>
         </div>
 
-        <div class="container card-grid three-up compact-top">
-          <article class="glass-card reveal">
-            <p class="mini-label">Research project</p>
-            <h3>Damage-tolerant ultralightweight metamaterials</h3>
-            <p>
-              Focused on distorted and disordered lattice systems for future air transportation applications.
-            </p>
+        <div class="shell quick-grid">
+          <article class="info-card reveal">
+            <span class="card-kicker">Base</span>
+            <h3>Queen Mary University of London</h3>
+            <p>PhD in Aeronautical Engineering, UKRI EPSRC supported research.</p>
           </article>
-          <article class="glass-card reveal" style="--delay: 80ms">
-            <p class="mini-label">Teaching</p>
-            <h3>Engineering modules across mechanics and simulation</h3>
-            <p>
-              Supporting students in subjects ranging from CFD and FEA to modelling, thermodynamics, and engineering management.
-            </p>
+          <article class="info-card reveal" style="--delay: 60ms">
+            <span class="card-kicker">Current direction</span>
+            <h3>Distorted lattice metamaterials</h3>
+            <p>Topology, disorder, adaptive simulation, and data-driven structural design.</p>
           </article>
-          <article class="glass-card reveal" style="--delay: 160ms">
-            <p class="mini-label">Working style</p>
-            <h3>Structured, interdisciplinary, and computational</h3>
-            <p>
-              Comfortable moving between analysis, coding, experimentation, communication, and design-oriented workflows.
-            </p>
+          <article class="info-card reveal" style="--delay: 120ms">
+            <span class="card-kicker">Broader experience</span>
+            <h3>Teaching, data, and digital work</h3>
+            <p>Academic teaching, Red Bull data science, tutoring, and technical web work.</p>
           </article>
         </div>
       </section>
 
-      <section class="section soft-band" id="focus">
-        <div class="container section-intro centered reveal">
-          <p class="kicker">Focus areas</p>
-          <h2>Where engineering mechanics meets data-driven design.</h2>
-        </div>
+      <section class="section-band alternate-band" id="research">
+        <div class="shell research-layout">
+          <div class="section-heading reveal">
+            <p class="eyebrow">Research</p>
+            <h2>Mechanical metamaterials, computational engineering, and machine learning.</h2>
+          </div>
 
-        <div class="container card-grid three-up">
-          <article class="feature-card reveal">
-            <div class="feature-icon">01</div>
-            <h3>Lattice metamaterials</h3>
-            <p>
-              Studying damage tolerance, topology, disorder, and structural response in ultralightweight mechanical metamaterials.
-            </p>
-          </article>
-          <article class="feature-card reveal" style="--delay: 80ms">
-            <div class="feature-icon">02</div>
-            <h3>Computational engineering</h3>
-            <p>
-              Using finite element analysis and simulation-led workflows to understand structural behaviour and guide design decisions.
-            </p>
-          </article>
-          <article class="feature-card reveal" style="--delay: 160ms">
-            <div class="feature-icon">03</div>
-            <h3>Machine learning</h3>
-            <p>
-              Exploring adaptive sampling, surrogate modelling, and data-centric strategies for complex multi-objective engineering problems.
-            </p>
-          </article>
+          <div class="research-columns">
+            <article class="research-block reveal">
+              <h3>Research project</h3>
+              <p>
+                My PhD research explores novel design pathways for damage-tolerant and
+                ultralightweight lattice metamaterials for future air transportation.
+              </p>
+              <ul class="detail-list">
+                <li>Distorted and quasi-disordered lattice architectures</li>
+                <li>Adaptive sampling of finite-element simulations</li>
+                <li>Physics-informed and graph-oriented machine learning workflows</li>
+                <li>Multi-objective optimization of structural and material properties</li>
+              </ul>
+            </article>
+
+            <article class="research-block reveal" style="--delay: 80ms">
+              <h3>Current methods</h3>
+              <p>
+                My workflow brings together structural mechanics, CAE tools, and data-centric
+                modelling.
+              </p>
+              <ul class="detail-list">
+                <li>Abaqus, ANSYS, and simulation-led design studies</li>
+                <li>Python and MATLAB for modelling and analysis</li>
+                <li>Machine learning, surrogate modelling, and optimization</li>
+                <li>Applied mathematics including linear algebra and multivariable calculus</li>
+              </ul>
+            </article>
+
+            <article class="research-block reveal" style="--delay: 160ms">
+              <h3>Outputs and milestones</h3>
+              <p>
+                My recent work includes conference presentations and an ongoing publication track
+                in lattice metamaterials and failure analysis.
+              </p>
+              <ul class="detail-list">
+                <li>ICEFA-X, Athens, 7-10 July 2024</li>
+                <li>Russell Binion Research Symposium, QMUL, 21 April 2026</li>
+                <li>Publication in review on quasi-disordered lattice metamaterials</li>
+                <li>BEng dissertation on aerofoil coefficient prediction using machine learning</li>
+              </ul>
+            </article>
+          </div>
         </div>
       </section>
 
-      <section class="section" id="experience">
-        <div class="container section-grid split-grid narrow-gap">
-          <div class="section-intro reveal">
-            <p class="kicker">Experience</p>
-            <h2>Selected roles across research, teaching, data, and digital work.</h2>
+      <section class="section-band" id="experience">
+        <div class="shell">
+          <div class="section-heading reveal">
+            <p class="eyebrow">Experience</p>
+            <h2>Selected work across research, teaching, data science, and software.</h2>
           </div>
-          <div class="copy-stack reveal" style="--delay: 80ms">
-            <p>
-              My experience spans academic teaching, commercial data science, web development, software testing, and private tutoring.
-              Together, these roles have strengthened both technical depth and practical communication.
-            </p>
+
+          <div class="timeline-stack">
+            <article class="timeline-row reveal">
+              <div class="timeline-meta">
+                <span>2024 - Present</span>
+                <span>London</span>
+              </div>
+              <div class="timeline-content">
+                <h3>Teaching Assistant · Queen Mary University of London</h3>
+                <p>
+                  Supporting student learning across fluid mechanics, CFD, solid mechanics, FEA,
+                  thermodynamics, computational modelling, simulation tools, engineering
+                  management, and more.
+                </p>
+              </div>
+            </article>
+
+            <article class="timeline-row reveal" style="--delay: 60ms">
+              <div class="timeline-meta">
+                <span>2022</span>
+                <span>Salzburg</span>
+              </div>
+              <div class="timeline-content">
+                <h3>Data Science Intern · Red Bull</h3>
+                <p>
+                  Worked on commercial data science tasks including market estimation,
+                  e-commerce evaluation, and analytical support for internal decision-making.
+                </p>
+              </div>
+            </article>
+
+            <article class="timeline-row reveal" style="--delay: 120ms">
+              <div class="timeline-meta">
+                <span>2021 - 2022</span>
+                <span>Remote</span>
+              </div>
+              <div class="timeline-content">
+                <h3>IT &amp; Web Developer · Dante Alighieri Project Foundation</h3>
+                <p>
+                  Contributed to website development, marketing strategy, SEO, and digital
+                  communication for a non-profit foundation.
+                </p>
+              </div>
+            </article>
+
+            <article class="timeline-row reveal" style="--delay: 180ms">
+              <div class="timeline-meta">
+                <span>2020 - Present</span>
+                <span>Remote</span>
+              </div>
+              <div class="timeline-content">
+                <h3>Software UI/UX Tester · Freelance</h3>
+                <p>
+                  Testing prototype software and digital products for companies including Meta,
+                  Hyundai, SumUp, and others through structured feedback and usability studies.
+                </p>
+              </div>
+            </article>
+
+            <article class="timeline-row reveal" style="--delay: 240ms">
+              <div class="timeline-meta">
+                <span>2017 - 2025</span>
+                <span>Rome / London</span>
+              </div>
+              <div class="timeline-content">
+                <h3>Private Academic Tutor</h3>
+                <p>
+                  Tutored school and university students across mathematics, physics,
+                  economics, engineering, data science, and computer science.
+                </p>
+              </div>
+            </article>
           </div>
         </div>
+      </section>
 
-        <div class="container mosaic-grid">
-          <article class="mosaic-card reveal featured-span">
-            <div class="card-topline">
-              <span>Jan 2024 — Present</span>
-              <span>London</span>
+      <section class="section-band alternate-band" id="education">
+        <div class="shell">
+          <div class="section-heading reveal">
+            <p class="eyebrow">Education</p>
+            <h2>Academic foundation in mechanics, modelling, and applied engineering.</h2>
+          </div>
+
+          <div class="education-grid">
+            <article class="education-card reveal">
+              <span class="card-kicker">2023 - Present</span>
+              <h3>PhD in Aeronautical Engineering</h3>
+              <p class="subtle">Queen Mary University of London · UKRI EPSRC Sponsored</p>
+              <p>
+                Research project: Damage Tolerant Ultralightweight Mechanical Metamaterials for
+                Future Air Transportation.
+              </p>
+            </article>
+
+            <article class="education-card reveal" style="--delay: 80ms">
+              <span class="card-kicker">2020 - 2023</span>
+              <h3>BEng Mechanical Engineering (Hons)</h3>
+              <p class="subtle">Queen Mary University of London · First Class Honours</p>
+              <p>
+                Dissertation on predictive modelling of experimental aerofoil aerodynamic
+                coefficients using machine learning. Recipient of the Beryl Beadle Prize.
+              </p>
+            </article>
+
+            <article class="education-card reveal" style="--delay: 160ms">
+              <span class="card-kicker">2015 - 2020</span>
+              <h3>American Overseas School of Rome</h3>
+              <p class="subtle">Secondary School Diploma · AP International Diploma</p>
+              <p>
+                Strong foundation in calculus, physics, chemistry, economics, and languages,
+                with AP Scholar with Distinction recognition.
+              </p>
+            </article>
+          </div>
+
+          <div class="skills-panel reveal" style="--delay: 220ms">
+            <div>
+              <p class="eyebrow">Skills snapshot</p>
+              <h3>Programming, CAE, and quantitative tools</h3>
             </div>
-            <h3>Teaching Assistant · Queen Mary University of London</h3>
-            <p>
-              Supporting undergraduate and postgraduate teaching across fluid mechanics, CFD, solid mechanics, FEA,
-              thermodynamics, simulation tools, and engineering management.
-            </p>
-          </article>
-
-          <article class="mosaic-card reveal" style="--delay: 70ms">
-            <div class="card-topline">
-              <span>Jun 2022 — Aug 2022</span>
-              <span>Salzburg</span>
-            </div>
-            <h3>Data Science Intern · Red Bull</h3>
-            <p>
-              Worked on market estimation, e-commerce market evaluation, and analytical support for internal commercial decision-making.
-            </p>
-          </article>
-
-          <article class="mosaic-card reveal" style="--delay: 140ms">
-            <div class="card-topline">
-              <span>Jan 2021 — Jun 2022</span>
-              <span>Remote</span>
-            </div>
-            <h3>IT &amp; Web Developer · Dante Alighieri Project Foundation</h3>
-            <p>
-              Contributed to website development, digital communication, SEO, and online content strategy for a non-profit project.
-            </p>
-          </article>
-
-          <article class="mosaic-card reveal" style="--delay: 210ms">
-            <div class="card-topline">
-              <span>Sept 2017 — May 2025</span>
-              <span>Rome / London / Remote</span>
-            </div>
-            <h3>Private Academic Tutor</h3>
-            <p>
-              Tutored students across mathematics, science, economics, engineering, data science, and computer science at multiple levels.
-            </p>
-          </article>
-        </div>
-      </section>
-
-      <section class="section soft-band" id="education">
-        <div class="container section-intro reveal">
-          <p class="kicker">Education</p>
-          <h2>Academic foundation in engineering, analysis, and applied modelling.</h2>
-        </div>
-
-        <div class="container timeline-grid">
-          <article class="timeline-card reveal">
-            <span class="timeline-year">2023 — Present</span>
-            <h3>PhD in Aeronautical Engineering</h3>
-            <p class="timeline-meta">Queen Mary University of London · UKRI EPSRC supported</p>
-            <p>
-              Researching distorted lattice metamaterials, stochastic disorder optimisation, adaptive simulation, and machine learning for engineering design.
-            </p>
-          </article>
-
-          <article class="timeline-card reveal" style="--delay: 80ms">
-            <span class="timeline-year">2020 — 2023</span>
-            <h3>BEng Mechanical Engineering (Hons)</h3>
-            <p class="timeline-meta">Queen Mary University of London · First Class Honours</p>
-            <p>
-              Dissertation on predictive modelling of experimental aerofoil aerodynamic coefficients using machine learning.
-            </p>
-          </article>
-
-          <article class="timeline-card reveal" style="--delay: 160ms">
-            <span class="timeline-year">2015 — 2020</span>
-            <h3>American Overseas School of Rome</h3>
-            <p class="timeline-meta">Secondary School Diploma · AP International Diploma</p>
-            <p>
-              Strong grounding in calculus, physics, chemistry, economics, and languages, with AP Scholar with Distinction recognition.
-            </p>
-          </article>
-        </div>
-      </section>
-
-      <section class="section" id="skills">
-        <div class="container section-grid split-grid narrow-gap">
-          <div class="section-intro reveal">
-            <p class="kicker">Skills</p>
-            <h2>Toolbox for structural analysis, modelling, and communication.</h2>
-          </div>
-          <div class="copy-stack reveal" style="--delay: 80ms">
-            <p>
-              My toolkit spans programming, CAE software, advanced mathematics, multilingual communication,
-              and a strong working familiarity with research and teaching workflows.
-            </p>
-          </div>
-        </div>
-
-        <div class="container skills-layout">
-          <article class="skill-panel reveal">
-            <h3>Programming</h3>
-            <div class="chip-set">
+            <div class="pill-row">
               <span>Python</span>
               <span>MATLAB</span>
-              <span>Bash</span>
               <span>LaTeX</span>
-            </div>
-          </article>
-          <article class="skill-panel reveal" style="--delay: 70ms">
-            <h3>Simulation &amp; engineering software</h3>
-            <div class="chip-set">
               <span>Abaqus</span>
               <span>ANSYS</span>
               <span>SolidWorks</span>
               <span>Creo</span>
               <span>Star-CCM+</span>
-            </div>
-          </article>
-          <article class="skill-panel reveal" style="--delay: 140ms">
-            <h3>Technical themes</h3>
-            <div class="chip-set">
               <span>Machine learning</span>
               <span>Data science</span>
-              <span>CAE</span>
-              <span>Mechanical engineering</span>
-              <span>Linear algebra</span>
-              <span>Multivariable calculus</span>
-            </div>
-          </article>
-          <article class="skill-panel reveal" style="--delay: 210ms">
-            <h3>Languages</h3>
-            <div class="chip-set">
               <span>Italian</span>
               <span>English</span>
               <span>French</span>
               <span>Spanish</span>
             </div>
-          </article>
+          </div>
         </div>
       </section>
 
-      <section class="section soft-band" id="writing">
-        <div class="container writing-grid">
-          <div class="section-intro reveal">
-            <p class="kicker">Writing</p>
-            <h2>A dedicated blog page for notes, ideas, and ongoing work.</h2>
-            <p>
-              The blog is set up as a separate page and ready to grow into a space for research notes,
-              simulation workflows, and technical reflections.
+      <section class="section-band" id="writing">
+        <div class="shell writing-layout">
+          <div class="section-heading reveal">
+            <p class="eyebrow">Writing</p>
+            <h2>A quieter space for research notes, simulation workflows, and technical reflections.</h2>
+            <p class="intro-copy">
+              I want the blog to become a running notebook for research ideas, computational
+              habits, and concise engineering writing.
             </p>
-            <a class="btn btn-primary" href="blog.html">Open blog</a>
+            <a class="button button-primary" href="blog.html">Open blog</a>
           </div>
 
-          <div class="blog-preview reveal" style="--delay: 100ms">
-            <article class="preview-card">
-              <p class="mini-label">Planned series</p>
+          <div class="writing-grid reveal" style="--delay: 100ms">
+            <article class="info-card">
+              <span class="card-kicker">Planned series</span>
               <h3>Research notes</h3>
-              <p>Short pieces on metamaterials, structural mechanics, and data-driven design methods.</p>
+              <p>Observations on metamaterials, failure analysis, and structural response.</p>
             </article>
-            <article class="preview-card">
-              <p class="mini-label">Planned series</p>
+            <article class="info-card">
+              <span class="card-kicker">Planned series</span>
               <h3>Simulation workflows</h3>
-              <p>Posts on modelling setups, engineering software, and practical computational habits.</p>
+              <p>Short write-ups on modelling decisions, engineering software, and process.</p>
             </article>
-            <article class="preview-card">
-              <p class="mini-label">Planned series</p>
-              <h3>Teaching &amp; learning</h3>
-              <p>Concise reflections tied to engineering education, tutoring, and technical communication.</p>
+            <article class="info-card">
+              <span class="card-kicker">Planned series</span>
+              <h3>Teaching and learning</h3>
+              <p>Reflections on explaining technical material clearly and practically.</p>
             </article>
           </div>
         </div>
       </section>
 
-      <section class="section" id="contact">
-        <div class="container contact-box reveal">
+      <section class="section-band contact-band" id="contact">
+        <div class="shell contact-layout reveal">
           <div>
-            <p class="kicker">Contact</p>
-            <h2>Let’s connect.</h2>
-            <p>
-              For research discussions, collaborations, teaching opportunities, or professional enquiries,
-              feel free to reach out.
+            <p class="eyebrow">Contact</p>
+            <h2>Open to research conversations, teaching opportunities, and technical collaborations.</h2>
+            <p class="intro-copy">
+              The best way to reach me is by email. You can also find my public profile and
+              website links below.
             </p>
           </div>
 
-          <div class="contact-links">
-            <a class="contact-link" href="mailto:n.forte@qmul.ac.uk">
-              <span class="contact-label">Email</span>
+          <div class="contact-grid">
+            <a class="contact-item" href="mailto:n.forte@qmul.ac.uk">
+              <span>Email</span>
               <strong>n.forte@qmul.ac.uk</strong>
             </a>
-            <a class="contact-link" href="https://www.linkedin.com/in/niccoloforte/" target="_blank" rel="noreferrer">
-              <span class="contact-label">LinkedIn</span>
+            <a class="contact-item" href="https://www.linkedin.com/in/niccoloforte/" target="_blank" rel="noreferrer">
+              <span>LinkedIn</span>
               <strong>Professional profile</strong>
             </a>
-            <a class="contact-link" href="https://linktr.ee/niccoloforte" target="_blank" rel="noreferrer">
-              <span class="contact-label">Linktree</span>
+            <a class="contact-item" href="https://linktr.ee/niccoloforte" target="_blank" rel="noreferrer">
+              <span>Linktree</span>
               <strong>Public links</strong>
             </a>
-            <a class="contact-link" href="https://github.com/niccoforte/niccoforte.github.io" target="_blank" rel="noreferrer">
-              <span class="contact-label">GitHub</span>
+            <a class="contact-item" href="https://github.com/niccoforte/niccoforte.github.io" target="_blank" rel="noreferrer">
+              <span>GitHub</span>
               <strong>Website repository</strong>
             </a>
           </div>
@@ -440,7 +453,7 @@
     </main>
 
     <footer class="site-footer">
-      <div class="container footer-wrap">
+      <div class="shell footer-bar">
         <p>© <span id="year"></span> Niccolò Forte</p>
         <div class="footer-links">
           <a href="#top">Back to top</a>
