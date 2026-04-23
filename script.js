@@ -2,6 +2,7 @@ const navToggle = document.getElementById("navToggle");
 const siteNav = document.getElementById("siteNav");
 const yearEl = document.getElementById("year");
 const themeToggle = document.getElementById("themeToggle");
+const languageSelect = document.getElementById("languageSelect");
 const pageName = document.body.dataset.page || "home";
 const supportedLanguages = new Set(["en", "it"]);
 
@@ -67,6 +68,7 @@ const translations = {
           "Ricerca, scrittura e lavoro tecnico su metamateriali reticolari, ingegneria computazionale e progettazione guidata dai dati.",
       },
       text: {
+        languageLabel: "Lingua",
         navAbout: "Profilo",
         navInterests: "Interessi",
         navPublications: "Pubblicazioni",
@@ -312,6 +314,7 @@ const translations = {
           "Scritti di Niccolò Forte su metamateriali reticolari, workflow di simulazione, giudizio ingegneristico e insegnamento tecnico.",
       },
       text: {
+        languageLabel: "Lingua",
         navHome: "Home",
         navBlog: "Blog",
         navContact: "Contatti",
@@ -374,9 +377,10 @@ const getRequestedLanguage = () => {
   const searchParams = new URLSearchParams(window.location.search);
   const queryLanguage = searchParams.get("lang");
 
-  if (queryLanguage && supportedLanguages.has(queryLanguage)) {
-    window.localStorage.setItem("site-language", queryLanguage);
-    return queryLanguage;
+  if (searchParams.has("lang")) {
+    const requestedLanguage = supportedLanguages.has(queryLanguage) ? queryLanguage : "en";
+    window.localStorage.setItem("site-language", requestedLanguage);
+    return requestedLanguage;
   }
 
   const storedLanguage = window.localStorage.getItem("site-language");
@@ -424,14 +428,7 @@ const updateLocalizedLinks = (language) => {
       return;
     }
 
-    if (link.dataset.langSwitch) {
-      resolvedUrl.hash = "";
-      if (link.dataset.langSwitch === "en") {
-        resolvedUrl.searchParams.delete("lang");
-      } else {
-        resolvedUrl.searchParams.set("lang", link.dataset.langSwitch);
-      }
-    } else if (language === "en") {
+    if (language === "en") {
       resolvedUrl.searchParams.delete("lang");
     } else {
       resolvedUrl.searchParams.set("lang", language);
@@ -442,13 +439,9 @@ const updateLocalizedLinks = (language) => {
 };
 
 const updateLanguageSwitcher = (language) => {
-  document.querySelectorAll("[data-lang-switch]").forEach((link) => {
-    if (link.dataset.langSwitch === language) {
-      link.setAttribute("aria-current", "page");
-    } else {
-      link.removeAttribute("aria-current");
-    }
-  });
+  if (languageSelect) {
+    languageSelect.value = language;
+  }
 };
 
 const syncCanonicalLanguageUrl = (language) => {
@@ -624,6 +617,13 @@ if (themeToggle) {
 }
 
 applyLanguage(getRequestedLanguage());
+
+if (languageSelect) {
+  languageSelect.addEventListener("change", (event) => {
+    const nextLanguage = supportedLanguages.has(event.target.value) ? event.target.value : "en";
+    applyLanguage(nextLanguage);
+  });
+}
 
 if (navToggle && siteNav) {
   navToggle.addEventListener("click", () => {

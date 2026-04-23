@@ -64,8 +64,11 @@
             aria-label="Language selector"
             data-i18n-aria-label="languageSelectorLabel"
           >
-            <a class="lang-link" href="index.html?lang=en" data-lang-switch="en" aria-current="page">EN</a>
-            <a class="lang-link" href="index.html?lang=it" data-lang-switch="it">IT</a>
+            <label class="visually-hidden" for="languageSelect" data-i18n="languageLabel">Language</label>
+            <select class="lang-select" id="languageSelect" aria-label="Language selector">
+              <option value="en">English</option>
+              <option value="it">Italiano</option>
+            </select>
           </div>
 
           <button
