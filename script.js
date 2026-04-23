@@ -3,6 +3,7 @@ const siteNav = document.getElementById("siteNav");
 const yearEl = document.getElementById("year");
 const themeToggle = document.getElementById("themeToggle");
 const languageSelect = document.getElementById("languageSelect");
+const faviconEl = document.getElementById("siteFavicon");
 const interestModal = document.getElementById("interestModal");
 const interestModalImage = document.getElementById("interestModalImage");
 const interestModalCaption = document.getElementById("interestModalCaption");
@@ -381,6 +382,7 @@ let activeLanguage = "en";
 let syncThemeToggle = () => {};
 let activeInterestId = null;
 let lastInterestTrigger = null;
+let invertedFaviconHref = null;
 
 const interestDetails = {
   en: {
@@ -678,6 +680,73 @@ const closeInterestModal = () => {
   }
 };
 
+const ensureInvertedFavicon = () =>
+  new Promise((resolve) => {
+    if (!faviconEl) {
+      resolve(null);
+      return;
+    }
+
+    if (invertedFaviconHref) {
+      resolve(invertedFaviconHref);
+      return;
+    }
+
+    const sourceHref = faviconEl.getAttribute("href");
+    if (!sourceHref) {
+      resolve(null);
+      return;
+    }
+
+    const img = new Image();
+    img.onload = () => {
+      const canvas = document.createElement("canvas");
+      const context = canvas.getContext("2d");
+
+      if (!context) {
+        resolve(null);
+        return;
+      }
+
+      canvas.width = img.naturalWidth || img.width;
+      canvas.height = img.naturalHeight || img.height;
+      context.drawImage(img, 0, 0);
+
+      const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+      const { data } = imageData;
+
+      for (let index = 0; index < data.length; index += 4) {
+        data[index] = 255 - data[index];
+        data[index + 1] = 255 - data[index + 1];
+        data[index + 2] = 255 - data[index + 2];
+      }
+
+      context.putImageData(imageData, 0, 0);
+      invertedFaviconHref = canvas.toDataURL("image/png");
+      resolve(invertedFaviconHref);
+    };
+
+    img.onerror = () => resolve(null);
+    img.src = sourceHref;
+  });
+
+const syncFavicon = async () => {
+  if (!faviconEl) {
+    return;
+  }
+
+  const isDark = colorSchemeQuery.matches;
+  const defaultHref = "favicon.png";
+
+  if (!isDark) {
+    faviconEl.setAttribute("href", defaultHref);
+    return;
+  }
+
+  const generatedHref = await ensureInvertedFavicon();
+  faviconEl.setAttribute("href", generatedHref || defaultHref);
+};
+
 const applyLanguage = (language) => {
   activeLanguage = supportedLanguages.has(language) ? language : "en";
   restoreEnglishContent();
@@ -761,12 +830,15 @@ const applyLanguage = (language) => {
   window.localStorage.setItem("site-language", activeLanguage);
 };
 
-const storedTheme = window.localStorage.getItem("theme");
-const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+const colorSchemeQuery = window.matchMedia("(prefers-color-scheme: dark)");
 
-if (storedTheme === "dark" || (!storedTheme && prefersDark)) {
-  document.body.classList.add("dark-mode");
-}
+const applyThemePreference = () => {
+  const storedTheme = window.localStorage.getItem("theme");
+  const prefersDark = colorSchemeQuery.matches;
+  document.body.classList.toggle("dark-mode", storedTheme === "dark" || (!storedTheme && prefersDark));
+};
+
+applyThemePreference();
 
 if (yearEl) {
   yearEl.textContent = new Date().getFullYear();
@@ -784,13 +856,26 @@ if (themeToggle) {
   };
 
   syncThemeToggle();
+  syncFavicon();
 
   themeToggle.addEventListener("click", () => {
     const isDark = document.body.classList.toggle("dark-mode");
     window.localStorage.setItem("theme", isDark ? "dark" : "light");
     syncThemeToggle();
+    syncFavicon();
   });
+} else {
+  syncFavicon();
 }
+
+colorSchemeQuery.addEventListener("change", () => {
+  syncFavicon();
+
+  if (!window.localStorage.getItem("theme")) {
+    applyThemePreference();
+    syncThemeToggle();
+  }
+});
 
 applyLanguage(getRequestedLanguage());
 
