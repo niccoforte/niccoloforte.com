@@ -62,7 +62,7 @@ const translations = {
       meta: {
         title: "Niccolò Forte",
         description:
-          "Niccolò Forte è un ricercatore di dottorato in ingegneria aeronautica alla Queen Mary University of London, dove lavora su metamateriali reticolari, meccanica computazionale e machine learning.",
+          "Niccolò Forte è un ricercatore di dottorato in ingegneria aerospaziale alla Queen Mary University of London, dove lavora su metamateriali reticolari, meccanica computazionale e machine learning.",
         ogTitle: "Niccolò Forte",
         ogDescription:
           "Ricerca, scrittura e lavoro tecnico su metamateriali reticolari, ingegneria computazionale e progettazione guidata dai dati.",
@@ -76,8 +76,8 @@ const translations = {
         navSoftware: "Software",
         navBlog: "Blog",
         navContact: "Contatti",
-        heroRole: "Ricercatore in Ingegneria Aeronautica",
-        heroSubtitleDegree: "Dottorato in Ingegneria Aeronautica",
+        heroRole: "Ricercatore in Ingegneria Aerospaziale",
+        heroSubtitleDegree: "Dottorato in Ingegneria Aerospaziale",
         heroSubtitleUniversity: "Queen Mary University of London",
         heroDetail: "Metamateriali reticolari - Meccanica computazionale - Machine learning",
         aboutTitle: "Abstract",
@@ -114,7 +114,7 @@ const translations = {
       html: {
         aboutCopy: `
           <p>
-            Sono un ricercatore di dottorato in Ingegneria Aeronautica alla Queen Mary University of
+            Sono un ricercatore di dottorato in Ingegneria Aerospaziale alla Queen Mary University of
             London, dove studio metamateriali meccanici ultraleggeri e tolleranti al danno per il
             trasporto aereo del futuro. Il mio lavoro attuale si concentra su architetture
             reticolari quasi distorte, workflow adattivi agli elementi finiti e ottimizzazione
@@ -238,7 +238,7 @@ const translations = {
         `,
         education1: `
           <div>
-            <p class="education-degree">Dottorato in Ingegneria Aeronautica</p>
+            <p class="education-degree">Dottorato in Ingegneria Aerospaziale</p>
             <p class="education-school">Queen Mary University of London</p>
             <p class="education-note">
               Tesi: Damage Tolerant Ultralightweight Mechanical Metamaterials for Future Air Transportation
