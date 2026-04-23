@@ -16,6 +16,8 @@
     />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://niccoloforte.com" />
+    <link rel="alternate" hreflang="en" href="https://niccoloforte.com/" />
+    <link rel="alternate" hreflang="it" href="https://niccoloforte.com/?lang=it" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -25,10 +27,13 @@
     <link rel="icon" type="image/png" href="favicon.png" />
     <link rel="stylesheet" href="style.css" />
   </head>
-  <body>
+  <body data-page="home">
     <header class="site-header">
       <div class="frame nav-frame">
-        <a class="site-name" href="#top">Niccolò Forte</a>
+        <a class="site-name" href="#top">
+          <img class="site-mark" src="favicon.png" alt="" aria-hidden="true" />
+          <span>Niccolò Forte</span>
+        </a>
 
         <button
           class="nav-toggle"
@@ -36,6 +41,7 @@
           aria-expanded="false"
           aria-controls="siteNav"
           aria-label="Toggle menu"
+          data-i18n-aria-label="navToggleLabel"
         >
           <span></span>
           <span></span>
@@ -43,14 +49,41 @@
         </button>
 
         <nav class="site-nav" id="siteNav">
-          <a href="#about">About</a>
-          <a href="#research">Interests</a>
-          <a href="#publications">Publications</a>
-          <a href="#research-experience">Research</a>
-          <a href="#projects">Software</a>
-          <a href="#blog">Blog</a>
-          <a href="#contact">Contact</a>
+          <a href="#about" data-i18n="navAbout">About</a>
+          <a href="#research" data-i18n="navInterests">Interests</a>
+          <a href="#publications" data-i18n="navPublications">Publications</a>
+          <a href="#research-experience" data-i18n="navResearch">Research</a>
+          <a href="#projects" data-i18n="navSoftware">Software</a>
+          <a href="#blog" data-i18n="navBlog">Blog</a>
+          <a href="#contact" data-i18n="navContact">Contact</a>
         </nav>
+
+        <div class="header-tools">
+          <div
+            class="lang-switcher"
+            aria-label="Language selector"
+            data-i18n-aria-label="languageSelectorLabel"
+          >
+            <a class="lang-link" href="index.html?lang=en" data-lang-switch="en" aria-current="page">EN</a>
+            <a class="lang-link" href="index.html?lang=it" data-lang-switch="it">IT</a>
+          </div>
+
+          <button
+            class="theme-toggle"
+            id="themeToggle"
+            type="button"
+            aria-label="Toggle dark mode"
+            aria-pressed="false"
+            title="Toggle dark mode"
+            data-light-label="Light"
+            data-dark-label="Dark"
+            data-light-title="Switch to light mode"
+            data-dark-title="Switch to dark mode"
+          >
+            <span class="theme-toggle-sun" aria-hidden="true">Light</span>
+            <span class="theme-toggle-moon" aria-hidden="true">Dark</span>
+          </button>
+        </div>
       </div>
     </header>
 
@@ -58,22 +91,34 @@
       <section class="hero">
         <img class="hero-background" src="assets/code.svg" alt="" aria-hidden="true" />
         <div class="hero-inner reveal">
-          <p class="hero-role">Aeronautical Engineering Researcher</p>
+          <p class="hero-role" data-i18n="heroRole">Aeronautical Engineering Researcher</p>
           <h1>Niccolò Forte</h1>
           <p class="hero-subtitle">
-            <span>PhD Aeronautical Engineering</span>
-            <span>Queen Mary University of London</span>
+            <span data-i18n="heroSubtitleDegree">PhD Aeronautical Engineering</span>
+            <span data-i18n="heroSubtitleUniversity">Queen Mary University of London</span>
           </p>
-          <p class="hero-detail">Lattice Metamaterials - Computational Mechanics - Machine Learning</p>
+          <p class="hero-detail" data-i18n="heroDetail">
+            Lattice Metamaterials - Computational Mechanics - Machine Learning
+          </p>
 
           <div class="hero-links" aria-label="External links">
-            <a href="mailto:n.forte@qmul.ac.uk" aria-label="Email">
+            <a
+              href="mailto:n.forte@qmul.ac.uk"
+              aria-label="Email"
+              data-i18n-aria-label="emailLabel"
+            >
               <svg viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M4 6h16v12H4z" />
                 <path d="m4 7 8 6 8-6" />
               </svg>
             </a>
-            <a href="https://github.com/niccoforte" target="_blank" rel="noreferrer" aria-label="GitHub">
+            <a
+              href="https://github.com/niccoforte"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="GitHub"
+              data-i18n-aria-label="githubLabel"
+            >
               <svg viewBox="0 0 24 24" aria-hidden="true">
                 <path
                   d="M12 3.2a9 9 0 0 0-2.85 17.54c.45.08.62-.19.62-.43v-1.55c-2.53.55-3.07-1.07-3.07-1.07-.41-1.05-1-1.32-1-1.32-.82-.56.06-.55.06-.55.91.06 1.39.94 1.39.94.8 1.38 2.1.98 2.61.75.08-.59.31-.98.56-1.21-2.02-.23-4.14-1.01-4.14-4.51 0-1 .36-1.82.94-2.46-.09-.23-.41-1.16.09-2.42 0 0 .77-.25 2.52.94a8.74 8.74 0 0 1 4.58 0c1.75-1.19 2.52-.94 2.52-.94.5 1.26.18 2.19.09 2.42.58.64.94 1.46.94 2.46 0 3.51-2.13 4.28-4.16 4.5.32.28.61.84.61 1.69v2.5c0 .24.16.51.63.43A9 9 0 0 0 12 3.2Z"
@@ -85,6 +130,7 @@
               target="_blank"
               rel="noreferrer"
               aria-label="LinkedIn"
+              data-i18n-aria-label="linkedinLabel"
             >
               <svg viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M6.94 8.72H3.56V20h3.38zM5.25 3.86A1.97 1.97 0 1 0 5.3 7.8a1.97 1.97 0 0 0-.05-3.94ZM20 13.24c0-3.02-1.61-4.43-3.76-4.43-1.73 0-2.51.95-2.94 1.62v-1.7H9.92c.04 1.12 0 11.27 0 11.27h3.38v-6.3c0-.34.02-.67.12-.91.27-.67.88-1.36 1.9-1.36 1.34 0 1.87 1.02 1.87 2.52V20H20Z" />
@@ -105,8 +151,8 @@
         <div class="section-inner narrow">
           <div class="reveal">
             <a class="section-index" href="#top">01</a>
-            <h2 class="section-title section-title-centered">Abstract</h2>
-            <div class="body-copy">
+            <h2 class="section-title section-title-centered" data-i18n="aboutTitle">Abstract</h2>
+            <div class="body-copy" data-i18n-html="aboutCopy">
               <p>
                 I am a PhD researcher in Aeronautical Engineering at Queen Mary University of
                 London, where I study damage-tolerant ultralightweight mechanical metamaterials
@@ -134,7 +180,7 @@
       <section class="section section-alt" id="research">
         <div class="section-inner">
           <a class="section-index" href="#top">02</a>
-          <h2 class="section-title reveal">Research Interests</h2>
+          <h2 class="section-title reveal" data-i18n="researchTitle">Research Interests</h2>
 
           <div class="interest-grid">
             <article class="interest-card reveal">
@@ -142,10 +188,10 @@
                 <div class="figure-shell">
                   <img src="assets/fig1-lattice.svg" alt="Lattice metamaterial diagram" />
                 </div>
-                <figcaption>Fig. 1: Distorted lattice unit-cell concept</figcaption>
+                <figcaption data-i18n="interest1Caption">Fig. 1: Distorted lattice unit-cell concept</figcaption>
               </figure>
-              <h3>Mechanical Metamaterials</h3>
-              <p>
+              <h3 data-i18n="interest1Title">Mechanical Metamaterials</h3>
+              <p data-i18n="interest1Text">
                 Lightweight lattice architectures, failure mechanisms, damage tolerance, and
                 structural design for aerospace applications.
               </p>
@@ -156,10 +202,10 @@
                 <div class="figure-shell">
                   <img src="assets/fig2-fea.svg" alt="Finite-element contour plot" />
                 </div>
-                <figcaption>Fig. 2: Finite-element stress field abstraction</figcaption>
+                <figcaption data-i18n="interest2Caption">Fig. 2: Finite-element stress field abstraction</figcaption>
               </figure>
-              <h3>Computational Mechanics</h3>
-              <p>
+              <h3 data-i18n="interest2Title">Computational Mechanics</h3>
+              <p data-i18n="interest2Text">
                 Simulation-led design with Abaqus and ANSYS, adaptive sampling strategies, and the
                 numerical workflows needed for reliable structural analysis.
               </p>
@@ -170,10 +216,10 @@
                 <div class="figure-shell">
                   <img src="assets/fig3-ml.svg" alt="Machine learning workflow diagram" />
                 </div>
-                <figcaption>Fig. 3: Data-driven design loop</figcaption>
+                <figcaption data-i18n="interest3Caption">Fig. 3: Data-driven design loop</figcaption>
               </figure>
-              <h3>Machine Learning for Design</h3>
-              <p>
+              <h3 data-i18n="interest3Title">Machine Learning for Design</h3>
+              <p data-i18n="interest3Text">
                 Surrogate modelling, physics-informed learning, graph-based representations, and
                 optimization pipelines for engineering decision-making.
               </p>
@@ -184,10 +230,10 @@
                 <div class="figure-shell">
                   <img src="assets/fig4-aero.svg" alt="Airfoil and optimization sketch" />
                 </div>
-                <figcaption>Fig. 4: Aerodynamic and structural design studies</figcaption>
+                <figcaption data-i18n="interest4Caption">Fig. 4: Aerodynamic and structural design studies</figcaption>
               </figure>
-              <h3>Applied Aerospace Engineering</h3>
-              <p>
+              <h3 data-i18n="interest4Title">Applied Aerospace Engineering</h3>
+              <p data-i18n="interest4Text">
                 Material efficiency, shape and topology optimization, and the broader mechanics
                 questions behind future flight structures.
               </p>
@@ -199,10 +245,10 @@
       <section class="section" id="publications">
         <div class="section-inner">
           <a class="section-index" href="#top">03</a>
-          <h2 class="section-title reveal">Publications</h2>
+          <h2 class="section-title reveal" data-i18n="publicationsTitle">Publications</h2>
 
           <div class="timeline-list">
-            <article class="timeline-item reveal">
+            <article class="timeline-item reveal" data-i18n-html="publication1">
               <p class="timeline-meta">2026 - In review</p>
               <h3>Paper on quasi-disordered lattice metamaterials and failure response</h3>
               <p class="timeline-subtle">Niccolò Forte</p>
@@ -213,7 +259,7 @@
               </p>
             </article>
 
-            <article class="timeline-item reveal" style="--delay: 80ms">
+            <article class="timeline-item reveal" style="--delay: 80ms" data-i18n-html="publication2">
               <p class="timeline-meta">2026 - Queen Mary University of London</p>
               <h3>Russell Binion Research Symposium presentation</h3>
               <p class="timeline-subtle">Research symposium contribution - 21 April 2026</p>
@@ -223,7 +269,7 @@
               </p>
             </article>
 
-            <article class="timeline-item reveal" style="--delay: 160ms">
+            <article class="timeline-item reveal" style="--delay: 160ms" data-i18n-html="publication3">
               <p class="timeline-meta">2024 - Athens, Greece</p>
               <h3>ICEFA-X conference presentation</h3>
               <p class="timeline-subtle">Tenth International Conference on Engineering Failure Analysis</p>
@@ -239,10 +285,10 @@
       <section class="section section-alt" id="research-experience">
         <div class="section-inner">
           <a class="section-index" href="#top">04</a>
-          <h2 class="section-title reveal">Research and Technical Experience</h2>
+          <h2 class="section-title reveal" data-i18n="experienceTitle">Research and Technical Experience</h2>
 
           <div class="timeline-list">
-            <article class="timeline-item reveal">
+            <article class="timeline-item reveal" data-i18n-html="experience1">
               <p class="timeline-meta">2023-present</p>
               <h3>Damage-tolerant ultralightweight mechanical metamaterials</h3>
               <p class="timeline-subtle">Queen Mary University of London - PhD research</p>
@@ -253,7 +299,7 @@
               </p>
             </article>
 
-            <article class="timeline-item reveal" style="--delay: 80ms">
+            <article class="timeline-item reveal" style="--delay: 80ms" data-i18n-html="experience2">
               <p class="timeline-meta">2024-present</p>
               <h3>Teaching assistant across engineering modules</h3>
               <p class="timeline-subtle">Queen Mary University of London</p>
@@ -263,7 +309,7 @@
               </p>
             </article>
 
-            <article class="timeline-item reveal" style="--delay: 160ms">
+            <article class="timeline-item reveal" style="--delay: 160ms" data-i18n-html="experience3">
               <p class="timeline-meta">2022</p>
               <h3>Data Science Intern</h3>
               <p class="timeline-subtle">Red Bull</p>
@@ -273,7 +319,7 @@
               </p>
             </article>
 
-            <article class="timeline-item reveal" style="--delay: 240ms">
+            <article class="timeline-item reveal" style="--delay: 240ms" data-i18n-html="experience4">
               <p class="timeline-meta">2020-2023</p>
               <h3>Machine learning for aerofoil coefficient prediction</h3>
               <p class="timeline-subtle">Queen Mary University of London - BEng dissertation</p>
@@ -289,10 +335,10 @@
       <section class="section" id="projects">
         <div class="section-inner">
           <a class="section-index" href="#top">05</a>
-          <h2 class="section-title reveal">Software and Digital Work</h2>
+          <h2 class="section-title reveal" data-i18n="softwareTitle">Software and Digital Work</h2>
 
           <div class="timeline-list">
-            <article class="timeline-item reveal">
+            <article class="timeline-item reveal" data-i18n-html="software1">
               <p class="timeline-meta">2026-present</p>
               <h3>
                 <a
@@ -311,7 +357,7 @@
               </p>
             </article>
 
-            <article class="timeline-item reveal" style="--delay: 80ms">
+            <article class="timeline-item reveal" style="--delay: 80ms" data-i18n-html="software2">
               <p class="timeline-meta">2021-2022</p>
               <h3>IT and Web Developer</h3>
               <p class="timeline-subtle">Dante Alighieri Project Foundation</p>
@@ -321,7 +367,7 @@
               </p>
             </article>
 
-            <article class="timeline-item reveal" style="--delay: 160ms">
+            <article class="timeline-item reveal" style="--delay: 160ms" data-i18n-html="software3">
               <p class="timeline-meta">2020-present</p>
               <h3>Freelance UI and UX Tester</h3>
               <p class="timeline-subtle">Prototype and product testing</p>
@@ -334,9 +380,9 @@
           </div>
 
           <div class="education-block reveal" style="--delay: 220ms">
-            <h3 class="education-heading">Education</h3>
+            <h3 class="education-heading" data-i18n="educationTitle">Education</h3>
 
-            <div class="education-row">
+            <div class="education-row" data-i18n-html="education1">
               <div>
                 <p class="education-degree">PhD Aeronautical Engineering</p>
                 <p class="education-school">Queen Mary University of London</p>
@@ -348,7 +394,7 @@
               <p class="education-years">2023-present</p>
             </div>
 
-            <div class="education-row">
+            <div class="education-row" data-i18n-html="education2">
               <div>
                 <p class="education-degree">BEng Mechanical Engineering - First Class Honours</p>
                 <p class="education-school">Queen Mary University of London</p>
@@ -360,7 +406,7 @@
               <p class="education-years">2020-2023</p>
             </div>
 
-            <div class="education-row">
+            <div class="education-row" data-i18n-html="education3">
               <div>
                 <p class="education-degree">Secondary School Diploma - AP International Diploma</p>
                 <p class="education-school">American Overseas School of Rome</p>
@@ -377,14 +423,14 @@
       <section class="section section-alt" id="blog">
         <div class="section-inner">
           <a class="section-index" href="#top">06</a>
-          <h2 class="section-title reveal">Writing</h2>
-          <p class="section-intro reveal">
+          <h2 class="section-title reveal" data-i18n="writingTitle">Writing</h2>
+          <p class="section-intro reveal" data-i18n="writingIntro">
             Notes in progress on metamaterials, modelling, engineering judgement, and the small
             decisions that make technical work more reliable.
           </p>
 
           <div class="timeline-list blog-list">
-            <article class="timeline-item reveal">
+            <article class="timeline-item reveal" data-i18n-html="writing1">
               <div class="tag-row">
                 <span class="tag">Planned</span>
                 <span class="tag tag-muted">Research</span>
@@ -398,7 +444,7 @@
               </p>
             </article>
 
-            <article class="timeline-item reveal" style="--delay: 80ms">
+            <article class="timeline-item reveal" style="--delay: 80ms" data-i18n-html="writing2">
               <div class="tag-row">
                 <span class="tag">Planned</span>
                 <span class="tag tag-muted">Simulation</span>
@@ -412,7 +458,7 @@
               </p>
             </article>
 
-            <article class="timeline-item reveal" style="--delay: 160ms">
+            <article class="timeline-item reveal" style="--delay: 160ms" data-i18n-html="writing3">
               <div class="tag-row">
                 <span class="tag">Planned</span>
                 <span class="tag tag-muted">Teaching</span>
@@ -427,7 +473,7 @@
             </article>
           </div>
 
-          <a class="outline-button reveal" style="--delay: 220ms" href="blog.html">
+          <a class="outline-button reveal" style="--delay: 220ms" href="blog.html" data-i18n="viewAllNotes">
             View All Notes
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <path d="M5 12h14" />
@@ -440,8 +486,8 @@
       <section class="section" id="contact">
         <div class="section-inner narrow center-text">
           <a class="section-index" href="#top">07</a>
-          <h2 class="section-title reveal">Get In Touch</h2>
-          <p class="section-intro reveal">
+          <h2 class="section-title reveal" data-i18n="contactTitle">Get In Touch</h2>
+          <p class="section-intro reveal" data-i18n="contactIntro">
             I am always happy to hear from people working on structural mechanics, aerospace
             research, metamaterials, engineering software, or thoughtful technical teaching.
           </p>
@@ -459,6 +505,7 @@
               href="assets/Niccolo-Forte-CV.pdf"
               target="_blank"
               rel="noreferrer"
+              data-i18n="cvLabel"
             >
               <svg viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M7 3h7l5 5v13H7z" />

@@ -9,6 +9,8 @@
       content="Writing by Niccolò Forte on lattice metamaterials, simulation workflows, engineering judgement, and technical teaching."
     />
     <meta name="theme-color" content="#f6f2ea" />
+    <link rel="alternate" hreflang="en" href="https://niccoloforte.com/blog.html" />
+    <link rel="alternate" hreflang="it" href="https://niccoloforte.com/blog.html?lang=it" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -18,10 +20,13 @@
     <link rel="icon" type="image/png" href="favicon.png" />
     <link rel="stylesheet" href="style.css" />
   </head>
-  <body>
+  <body data-page="blog">
     <header class="site-header">
       <div class="frame nav-frame">
-        <a class="site-name" href="index.html">Niccolò Forte</a>
+        <a class="site-name" href="index.html">
+          <img class="site-mark" src="favicon.png" alt="" aria-hidden="true" />
+          <span>Niccolò Forte</span>
+        </a>
 
         <button
           class="nav-toggle"
@@ -29,6 +34,7 @@
           aria-expanded="false"
           aria-controls="siteNav"
           aria-label="Toggle menu"
+          data-i18n-aria-label="navToggleLabel"
         >
           <span></span>
           <span></span>
@@ -36,19 +42,46 @@
         </button>
 
         <nav class="site-nav" id="siteNav">
-          <a href="index.html">Home</a>
-          <a href="blog.html" aria-current="page">Blog</a>
-          <a href="index.html#contact">Contact</a>
+          <a href="index.html" data-i18n="navHome">Home</a>
+          <a href="blog.html" aria-current="page" data-i18n="navBlog">Blog</a>
+          <a href="index.html#contact" data-i18n="navContact">Contact</a>
         </nav>
+
+        <div class="header-tools">
+          <div
+            class="lang-switcher"
+            aria-label="Language selector"
+            data-i18n-aria-label="languageSelectorLabel"
+          >
+            <a class="lang-link" href="blog.html?lang=en" data-lang-switch="en" aria-current="page">EN</a>
+            <a class="lang-link" href="blog.html?lang=it" data-lang-switch="it">IT</a>
+          </div>
+
+          <button
+            class="theme-toggle"
+            id="themeToggle"
+            type="button"
+            aria-label="Toggle dark mode"
+            aria-pressed="false"
+            title="Toggle dark mode"
+            data-light-label="Light"
+            data-dark-label="Dark"
+            data-light-title="Switch to light mode"
+            data-dark-title="Switch to dark mode"
+          >
+            <span class="theme-toggle-sun" aria-hidden="true">Light</span>
+            <span class="theme-toggle-moon" aria-hidden="true">Dark</span>
+          </button>
+        </div>
       </div>
     </header>
 
     <main>
       <section class="blog-hero">
         <div class="section-inner narrow reveal">
-          <p class="hero-role">Blog</p>
-          <h1 class="blog-title">Research Notes</h1>
-          <p class="blog-subtitle">
+          <p class="hero-role" data-i18n="heroRole">Blog</p>
+          <h1 class="blog-title" data-i18n="blogTitle">Research Notes</h1>
+          <p class="blog-subtitle" data-i18n="blogSubtitle">
             Writing on metamaterials, computation, modelling practice, and the craft of technical
             explanation.
           </p>
@@ -58,14 +91,14 @@
       <section class="section blog-section">
         <div class="section-inner narrow">
           <div class="tag-row reveal">
-            <span class="tag">Research</span>
-            <span class="tag tag-muted">Simulation</span>
-            <span class="tag tag-muted">Teaching</span>
-            <span class="tag tag-muted">In progress</span>
+            <span class="tag" data-i18n="tagResearch">Research</span>
+            <span class="tag tag-muted" data-i18n="tagSimulation">Simulation</span>
+            <span class="tag tag-muted" data-i18n="tagTeaching">Teaching</span>
+            <span class="tag tag-muted" data-i18n="tagInProgress">In progress</span>
           </div>
 
           <div class="timeline-list blog-list">
-            <article class="timeline-item reveal">
+            <article class="timeline-item reveal" data-i18n-html="blogPost1">
               <div class="tag-row">
                 <span class="tag">Planned</span>
                 <span class="tag tag-muted">Research</span>
@@ -79,7 +112,7 @@
               <span class="blog-more">Coming soon</span>
             </article>
 
-            <article class="timeline-item reveal" style="--delay: 80ms">
+            <article class="timeline-item reveal" style="--delay: 80ms" data-i18n-html="blogPost2">
               <div class="tag-row">
                 <span class="tag">Planned</span>
                 <span class="tag tag-muted">Simulation</span>
@@ -92,7 +125,7 @@
               <span class="blog-more">Coming soon</span>
             </article>
 
-            <article class="timeline-item reveal" style="--delay: 160ms">
+            <article class="timeline-item reveal" style="--delay: 160ms" data-i18n-html="blogPost3">
               <div class="tag-row">
                 <span class="tag">Planned</span>
                 <span class="tag tag-muted">Teaching</span>
@@ -112,7 +145,7 @@
     <footer class="site-footer">
       <div class="section-inner footer-inner">
         <div class="footer-links">
-          <a href="index.html">Home</a>
+          <a href="index.html" data-i18n="navHome">Home</a>
           <a href="assets/Niccolo-Forte-CV.pdf" target="_blank" rel="noreferrer">CV</a>
         </div>
         <p>- Niccolò Forte - <span id="year"></span> -</p>
