@@ -1717,6 +1717,7 @@ body.dark-mode .cv-modal-toolbar {
     display: block;
     width: 100%;
     text-align: left;
+    padding-left: 0.85rem;
   }
 
 
@@ -1806,6 +1807,14 @@ body.dark-mode .cv-modal-toolbar {
     height: 1.56rem;
   }
 
+  .theme-toggle-icon-sun {
+    transform: translateX(0.08rem);
+  }
+
+  .theme-toggle-icon-moon {
+    transform: translateX(-0.08rem);
+  }
+
   body.dark-mode .theme-toggle-thumb {
     transform: translateX(1.76rem);
   }
@@ -1846,18 +1855,39 @@ body.dark-mode .cv-modal-toolbar {
     grid-template-columns: 1fr;
   }
 
+  .cv-modal {
+    padding: 0.75rem;
+  }
+
+  .cv-modal-dialog {
+    width: min(calc(100vw - 1.5rem), 58rem);
+    max-height: calc(100dvh - 1.5rem);
+  }
+
   .cv-modal-shell {
+    width: 100%;
+    box-sizing: border-box;
     padding: 1rem;
-    max-height: calc(100vh - 1.5rem);
+    max-height: calc(100dvh - 1.5rem);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
   }
 
   .cv-modal-header {
     align-items: stretch;
     flex-direction: column;
     padding-right: 2.4rem;
+    flex: 0 0 auto;
   }
   .cv-modal-open-button {
     width: 100%;
+  }
+
+  .cv-modal-viewer {
+    min-width: 0;
+    flex: 1 1 auto;
+    overflow: hidden;
   }
 
   .cv-modal-toolbar {
@@ -1866,8 +1896,18 @@ body.dark-mode .cv-modal-toolbar {
   }
 
   .cv-pdf-pages {
-    max-height: min(62vh, 38rem);
+    width: 100%;
+    max-width: 100%;
+    max-height: min(58vh, 34rem);
+    overflow: auto;
     padding-inline: 0.65rem;
+  }
+
+  .cv-pdf-page {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
   }
 
   .interest-modal {
