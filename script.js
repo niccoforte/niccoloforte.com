@@ -1,4 +1,4 @@
-Ôªøconst navToggle = document.getElementById("navToggle");
+const navToggle = document.getElementById("navToggle");
 const siteNav = document.getElementById("siteNav");
 const yearEl = document.getElementById("year");
 const themeToggle = document.getElementById("themeToggle");
@@ -108,16 +108,16 @@ const translations = {
       themeLabels: {
         lightLabel: "Chiaro",
         darkLabel: "Scuro",
-        lightTitle: "Passa alla modalit√† chiara",
-        darkTitle: "Passa alla modalit√† scura",
+        lightTitle: "Passa alla modalit‡ chiara",
+        darkTitle: "Passa alla modalit‡ scura",
       },
     },
     home: {
       meta: {
-        title: "Niccol√≤ Forte",
+        title: "NiccolÚ Forte",
         description:
-          "Niccol√≤ Forte √® dottorando in ingegneria aerospaziale alla Queen Mary University of London, dove lavora su metamateriali reticolari, meccanica computazionale e machine learning.",
-        ogTitle: "Niccol√≤ Forte",
+          "NiccolÚ Forte Ë dottorando in ingegneria aerospaziale alla Queen Mary University of London, dove lavora su metamateriali reticolari, meccanica computazionale e machine learning.",
+        ogTitle: "NiccolÚ Forte",
         ogDescription:
           "Ricerca, scrittura e lavoro tecnico su metamateriali reticolari, ingegneria computazionale e progettazione guidata dai dati.",
       },
@@ -153,16 +153,16 @@ const translations = {
         interest4Text:
           "Efficienza dei materiali, ottimizzazione di forma e topologia, e i principi di meccanica che guidano le strutture del volo del futuro.",
         publicationsTitle: "Pubblicazioni",
-        experienceTitle: "Esperienza di ricerca e attivit√† tecnica",
-        softwareTitle: "Software e attivit√† digitali",
+        experienceTitle: "Esperienza di ricerca e attivit‡ tecnica",
+        softwareTitle: "Software e attivit‡ digitali",
         educationTitle: "Formazione",
         writingTitle: "Scritti",
         writingIntro:
-          "Note in preparazione su metamateriali, modellazione, giudizio ingegneristico e quelle piccole decisioni che rendono il lavoro tecnico pi√π affidabile.",
+          "Note in preparazione su metamateriali, modellazione, giudizio ingegneristico e quelle piccole decisioni che rendono il lavoro tecnico pi˘ affidabile.",
         viewAllNotes: "Vedi tutte le note",
         contactTitle: "Contatti",
         contactIntro:
-          "Mi fa sempre piacere entrare in contatto con persone che lavorano su meccanica strutturale, ricerca aerospaziale, metamateriali, software ingegneristico o insegnamento tecnico di qualit√†.",
+          "Mi fa sempre piacere entrare in contatto con persone che lavorano su meccanica strutturale, ricerca aerospaziale, metamateriali, software ingegneristico o insegnamento tecnico di qualit‡.",
         contactCardLabel: "Scheda contatto",
         contactFormIntro:
           "Oppure scrivimi senza lasciare questa pagina, indicando il tuo nome, indirizzo email e messaggio.",
@@ -171,7 +171,7 @@ const translations = {
         formMessageLabel: "Messaggio",
         formSubmitLabel: "Invia messaggio",
         formSendingLabel: "Invio in corso...",
-        formSuccessMessage: "Grazie per il tuo messaggio. Ti risponder√≤ il prima possibile.",
+        formSuccessMessage: "Grazie per il tuo messaggio. Ti risponderÚ il prima possibile.",
         formErrorMessage:
           "Non sono riuscito a inviare il messaggio in questo momento. Riprova tra poco oppure scrivimi via email.",
         saveContactLabel: "Salva contatto",
@@ -214,7 +214,7 @@ const translations = {
         publication1: `
           <p class="timeline-meta">2026 - In revisione</p>
           <h3>Articolo su metamateriali reticolari quasi disordinati e risposta al cedimento</h3>
-          <p class="timeline-subtle">Niccol√≤ Forte</p>
+          <p class="timeline-subtle">NiccolÚ Forte</p>
           <p>
             Percorso di pubblicazione in corso nato dal lavoro di dottorato su metamateriali
             meccanici leggeri, architetture quasi disordinate e comportamento strutturale tollerante
@@ -309,7 +309,7 @@ const translations = {
           <p class="timeline-subtle">Test di prototipi e prodotti</p>
           <p>
             Test di esperienze software e di prodotto in fase iniziale per aziende come Meta,
-            Hyundai e SumUp, con attenzione a usabilit√†, percezione del prodotto e feedback
+            Hyundai e SumUp, con attenzione a usabilit‡, percezione del prodotto e feedback
             strutturato.
           </p>
         `,
@@ -362,7 +362,7 @@ const translations = {
             <span class="tag tag-muted">Simulazione</span>
           </div>
           <a class="inline-link" href="blog.html">
-            <h3>Rendere i workflow agli elementi finiti pi√π affidabili</h3>
+            <h3>Rendere i workflow agli elementi finiti pi˘ affidabili</h3>
           </a>
           <p>
             Riflessioni su scelte di mesh, strategia di campionamento e sulla differenza tra un
@@ -386,9 +386,9 @@ const translations = {
     },
     blog: {
       meta: {
-        title: "Niccol√≤ Forte | Blog",
+        title: "NiccolÚ Forte | Blog",
         description:
-          "Scritti di Niccol√≤ Forte su metamateriali reticolari, workflow di simulazione, giudizio ingegneristico e insegnamento tecnico.",
+          "Scritti di NiccolÚ Forte su metamateriali reticolari, workflow di simulazione, giudizio ingegneristico e insegnamento tecnico.",
       },
       text: {
         languageLabel: "Lingua",
@@ -412,7 +412,7 @@ const translations = {
           </div>
           <h2 class="blog-entry-title">Cosa cambia quando il disordine reticolare diventa una variabile di progetto</h2>
           <p>
-            Una nota sul perch√© l'irregolarit√† geometrica possa migliorare le prestazioni, su quale
+            Una nota sul perchÈ l'irregolarit‡ geometrica possa migliorare le prestazioni, su quale
             tipo di disordine sia davvero utile e su come pensare ai reticoli quasi distorti senza
             trasformarli in oggetti estetici vaghi.
           </p>
@@ -423,10 +423,10 @@ const translations = {
             <span class="tag">Previsto</span>
             <span class="tag tag-muted">Simulazione</span>
           </div>
-          <h2 class="blog-entry-title">Rendere i workflow agli elementi finiti pi√π affidabili</h2>
+          <h2 class="blog-entry-title">Rendere i workflow agli elementi finiti pi˘ affidabili</h2>
           <p>
             Pensieri su mesh, condizioni al contorno, campionamento adattivo e sulle abitudini che
-            rendono la simulazione meno rituale e pi√π ingegneria.
+            rendono la simulazione meno rituale e pi˘ ingegneria.
           </p>
           <span class="blog-more">In arrivo</span>
         `,
@@ -438,7 +438,7 @@ const translations = {
           <h2 class="blog-entry-title">Insegnare la simulazione senza renderla misteriosa</h2>
           <p>
             Riflessioni da esercitazioni e laboratori su come spiegare con chiarezza le decisioni di
-            modellazione, rispettando allo stesso tempo la complessit√† della meccanica sottostante.
+            modellazione, rispettando allo stesso tempo la complessit‡ della meccanica sottostante.
           </p>
           <span class="blog-more">In arrivo</span>
         `,
@@ -527,27 +527,27 @@ const interestDetails = {
   it: {
     interest1: `
       <p>
-        La mia principale attivit√† di ricerca riguarda materiali reticolari architettati che
-        restano leggeri ma diventano anche pi√π tolleranti al danno, robusti e utili in strutture
+        La mia principale attivit‡ di ricerca riguarda materiali reticolari architettati che
+        restano leggeri ma diventano anche pi˘ tolleranti al danno, robusti e utili in strutture
         aerospaziali reali. Mi interessa soprattutto capire come la distorsione geometrica locale
         cambi rigidezza, progressione del cedimento e risposta dopo il danno.
       </p>
       <p>
-        Questo lavoro unisce meccanica strutturale, temi di fabbricabilit√† e strategia di
+        Questo lavoro unisce meccanica strutturale, temi di fabbricabilit‡ e strategia di
         progettazione: non solo se un reticolo sia efficiente in teoria, ma se possa diventare un
         concetto strutturale affidabile per il trasporto aereo del futuro.
       </p>
     `,
     interest2: `
       <p>
-        La meccanica computazionale √® il principale insieme di strumenti con cui verifico le idee.
+        La meccanica computazionale Ë il principale insieme di strumenti con cui verifico le idee.
         Uso la modellazione agli elementi finiti per confrontare architetture, studiare la
         ridistribuzione degli sforzi e valutare come le scelte progettuali si comportino sotto
         ipotesi di carico realistiche.
       </p>
       <p>
-        Mi interessano in particolare i workflow adattivi che rendono la simulazione pi√π
-        affidabile: migliori scelte di mesh, campionamento pi√π intelligente e pipeline numeriche
+        Mi interessano in particolare i workflow adattivi che rendono la simulazione pi˘
+        affidabile: migliori scelte di mesh, campionamento pi˘ intelligente e pipeline numeriche
         che mostrino un comportamento strutturale davvero significativo, invece di produrre
         risultati solo apparentemente ben rifiniti.
       </p>
@@ -560,20 +560,20 @@ const interestDetails = {
         sistemi strutturali complessi.
       </p>
       <p>
-        L'obiettivo non √® sostituire il giudizio ingegneristico, ma supportarlo: usare strumenti di
+        L'obiettivo non Ë sostituire il giudizio ingegneristico, ma supportarlo: usare strumenti di
         apprendimento per navigare grandi spazi di progetto mantenendo leggibili meccanica e fisica.
       </p>
     `,
     interest4: `
       <p>
-        La motivazione pi√π ampia del mio lavoro √® l'ingegneria aerospaziale applicata: capire come
-        le strutture del volo del futuro possano diventare pi√π leggere, efficienti e resilienti
+        La motivazione pi˘ ampia del mio lavoro Ë l'ingegneria aerospaziale applicata: capire come
+        le strutture del volo del futuro possano diventare pi˘ leggere, efficienti e resilienti
         senza sacrificare sicurezza o prestazioni pratiche.
       </p>
       <p>
-        Questo significa ragionare su pi√π scale, dal comportamento locale della cella unitaria fino
+        Questo significa ragionare su pi˘ scale, dal comportamento locale della cella unitaria fino
         alla progettazione dell'intero sistema, mantenendo sempre presenti i veri compromessi
-        ingegneristici tra peso, tolleranza al danno, fabbricabilit√† e prestazioni.
+        ingegneristici tra peso, tolleranza al danno, fabbricabilit‡ e prestazioni.
       </p>
     `,
   },
@@ -799,11 +799,6 @@ const closeContactCardModal = () => {
 
 const openCvModal = (trigger) => {
   if (!cvModal) {
-    return;
-  }
-
-  if (window.matchMedia("(max-width: 700px)").matches) {
-    window.open("assets/Niccolo-Forte-CV.pdf#view=FitH", "_blank", "noopener,noreferrer");
     return;
   }
 
@@ -1395,6 +1390,7 @@ if ("IntersectionObserver" in window && sectionLinks.length > 0 && sections.leng
 
   sections.forEach((section) => navObserver.observe(section));
 }
+
 
 
 
