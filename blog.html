@@ -85,6 +85,21 @@
             </span>
             <span class="theme-toggle-thumb" aria-hidden="true"></span>
           </button>
+
+          <button
+            class="header-icon-button"
+            type="button"
+            data-share-trigger
+            aria-label="Share this page"
+            data-i18n-aria-label="shareTriggerLabel"
+            title="Share this page"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 4v10" />
+              <path d="m8.5 7.5 3.5-3.5 3.5 3.5" />
+              <path d="M6 11.5v7.5h12v-7.5" />
+            </svg>
+          </button>
         </div>
       </div>
     </header>
@@ -155,13 +170,382 @@
       </section>
     </main>
 
+    <div class="share-modal" id="shareModal" hidden>
+      <button
+        class="share-modal-backdrop"
+        type="button"
+        data-share-close
+        tabindex="-1"
+        aria-hidden="true"
+      ></button>
+      <div
+        class="share-modal-dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="shareModalTitle"
+      >
+        <button
+          class="share-modal-close"
+          type="button"
+          data-share-close
+          aria-label="Close share options"
+          data-i18n-aria-label="shareModalCloseLabel"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M6 6 18 18" />
+            <path d="m18 6-12 12" />
+          </svg>
+        </button>
+
+        <div class="share-modal-shell">
+          <div class="share-modal-header">
+            <p class="contact-card-eyebrow" data-i18n="shareEyebrow">Share</p>
+            <h3 class="share-modal-title" id="shareModalTitle" data-i18n="shareTitle">Share This Page</h3>
+            <p class="share-modal-intro" data-i18n="shareIntro">
+              Copy the link or send this page through the platform you prefer.
+            </p>
+          </div>
+
+          <div class="share-grid">
+            <button class="outline-button share-option" type="button" id="shareCopyButton" data-i18n="shareCopyLabel">
+              Copy Link
+            </button>
+            <a class="outline-button share-option" id="shareEmailLink" href="#" data-i18n="shareEmailLabel">
+              Email
+            </a>
+            <a
+              class="outline-button share-option"
+              id="shareLinkedInLink"
+              href="#"
+              target="_blank"
+              rel="noreferrer"
+              data-i18n="shareLinkedinLabel"
+            >
+              LinkedIn
+            </a>
+            <a
+              class="outline-button share-option"
+              id="shareFacebookLink"
+              href="#"
+              target="_blank"
+              rel="noreferrer"
+              data-i18n="shareFacebookLabel"
+            >
+              Facebook
+            </a>
+            <a
+              class="outline-button share-option"
+              id="shareXLink"
+              href="#"
+              target="_blank"
+              rel="noreferrer"
+              data-i18n="shareXLabel"
+            >
+              X
+            </a>
+            <a
+              class="outline-button share-option"
+              id="shareWhatsAppLink"
+              href="#"
+              target="_blank"
+              rel="noreferrer"
+              data-i18n="shareWhatsAppLabel"
+            >
+              WhatsApp
+            </a>
+          </div>
+
+          <p class="share-status" id="shareStatus" role="status" aria-live="polite"></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-card-modal" id="contactCardModal" hidden>
+      <button
+        class="contact-card-modal-backdrop"
+        type="button"
+        data-contact-card-close
+        tabindex="-1"
+        aria-hidden="true"
+      ></button>
+      <div
+        class="contact-card-dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="contactCardTitle"
+      >
+        <button
+          class="contact-card-close"
+          type="button"
+          data-contact-card-close
+          aria-label="Close contact card"
+          data-i18n-aria-label="contactCardCloseLabel"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M6 6 18 18" />
+            <path d="m18 6-12 12" />
+          </svg>
+        </button>
+
+        <div class="contact-card-sheet">
+          <div class="contact-card-header">
+            <img class="contact-card-mark" src="favicon.png" alt="" aria-hidden="true" />
+            <div>
+              <p class="contact-card-eyebrow" data-i18n="contactCardEyebrow">Personal Contact Card</p>
+              <h3 class="contact-card-title" id="contactCardTitle">NiccolÃ² Forte</h3>
+              <p class="contact-card-role" data-i18n="contactCardRole">PhD Candidate in Aerospace Engineering</p>
+            </div>
+          </div>
+
+          <div class="contact-card-list">
+            <div class="contact-card-row">
+              <span class="contact-card-label">
+                <span class="contact-card-label-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M4 6h16v12H4z" />
+                    <path d="m4 7 8 6 8-6" />
+                  </svg>
+                </span>
+                <span data-i18n="contactCardWorkEmailLabel">Work email</span>
+              </span>
+              <a class="contact-card-value" href="mailto:work@niccoloforte.com">work@niccoloforte.com</a>
+            </div>
+            <div class="contact-card-row">
+              <span class="contact-card-label">
+                <span class="contact-card-label-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M4 6h16v12H4z" />
+                    <path d="m4 7 8 6 8-6" />
+                  </svg>
+                </span>
+                <span data-i18n="contactCardPersonalEmailLabel">Personal email</span>
+              </span>
+              <a class="contact-card-value" href="mailto:me@niccoloforte.com">me@niccoloforte.com</a>
+            </div>
+            <div class="contact-card-row">
+              <span class="contact-card-label">
+                <span class="contact-card-label-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M6.62 10.79a15.46 15.46 0 0 0 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.11.37 2.31.57 3.57.57.56 0 1 .45 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.49c.55 0 1 .44 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.19 2.2Z" />
+                  </svg>
+                </span>
+                <span data-i18n="contactCardUkPhoneLabel">UK phone</span>
+              </span>
+              <a class="contact-card-value" href="tel:+447375136980">+44 7375 136980</a>
+            </div>
+            <div class="contact-card-row">
+              <span class="contact-card-label">
+                <span class="contact-card-label-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M6.62 10.79a15.46 15.46 0 0 0 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.11.37 2.31.57 3.57.57.56 0 1 .45 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.49c.55 0 1 .44 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.19 2.2Z" />
+                  </svg>
+                </span>
+                <span data-i18n="contactCardItPhoneLabel">IT phone</span>
+              </span>
+              <a class="contact-card-value" href="tel:+393273321244">+39 327 3321244</a>
+            </div>
+            <div class="contact-card-row">
+              <span class="contact-card-label">
+                <span class="contact-card-label-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M12 21c4.97 0 9-4.03 9-9S16.97 3 12 3 3 7.03 3 12s4.03 9 9 9Z" />
+                    <path d="M3.6 9h16.8" />
+                    <path d="M3.6 15h16.8" />
+                    <path d="M12 3c2.2 2.2 3.5 5.4 3.5 9S14.2 18.8 12 21c-2.2-2.2-3.5-5.4-3.5-9S9.8 5.2 12 3Z" />
+                  </svg>
+                </span>
+                <span data-i18n="contactCardWebsiteLabel">Website</span>
+              </span>
+              <a class="contact-card-value" href="https://niccoloforte.com" target="_blank" rel="noreferrer">
+                niccoloforte.com
+              </a>
+            </div>
+            <div class="contact-card-row">
+              <span class="contact-card-label">
+                <span class="contact-card-label-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M6.94 8.72H3.56V20h3.38zM5.25 3.86A1.97 1.97 0 1 0 5.3 7.8a1.97 1.97 0 0 0-.05-3.94ZM20 13.24c0-3.02-1.61-4.43-3.76-4.43-1.73 0-2.51.95-2.94 1.62v-1.7H9.92c.04 1.12 0 11.27 0 11.27h3.38v-6.3c0-.34.02-.67.12-.91.27-.67.88-1.36 1.9-1.36 1.34 0 1.87 1.02 1.87 2.52V20H20Z" />
+                  </svg>
+                </span>
+                <span data-i18n="contactCardLinkedInLabel">LinkedIn</span>
+              </span>
+              <a class="contact-card-value" href="https://www.linkedin.com/in/niccoloforte/" target="_blank" rel="noreferrer">
+                linkedin.com/in/niccoloforte
+              </a>
+            </div>
+            <div class="contact-card-row">
+              <span class="contact-card-label">
+                <span class="contact-card-label-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M12 3.2a9 9 0 0 0-2.85 17.54c.45.08.62-.19.62-.43v-1.55c-2.53.55-3.07-1.07-3.07-1.07-.41-1.05-1-1.32-1-1.32-.82-.56.06-.55.06-.55.91.06 1.39.94 1.39.94.8 1.38 2.1.98 2.61.75.08-.59.31-.98.56-1.21-2.02-.23-4.14-1.01-4.14-4.51 0-1 .36-1.82.94-2.46-.09-.23-.41-1.16.09-2.42 0 0 .77-.25 2.52.94a8.74 8.74 0 0 1 4.58 0c1.75-1.19 2.52-.94 2.52-.94.5 1.26.18 2.19.09 2.42.58.64.94 1.46.94 2.46 0 3.51-2.13 4.28-4.16 4.5.32.28.61.84.61 1.69v2.5c0 .24.16.51.63.43A9 9 0 0 0 12 3.2Z" />
+                  </svg>
+                </span>
+                <span data-i18n="contactCardGitHubLabel">GitHub</span>
+              </span>
+              <a class="contact-card-value" href="https://github.com/niccoforte" target="_blank" rel="noreferrer">
+                github.com/niccoforte
+              </a>
+            </div>
+          </div>
+
+          <div class="contact-card-actions">
+            <button class="outline-button outline-button-muted" type="button" data-socials-trigger data-i18n="socialsLabel">
+              Socials
+            </button>
+            <a class="outline-button" href="assets/Niccolo-Forte-Contact.vcf" download data-i18n="saveContactLabel">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 4v10" />
+                <path d="m8 10 4 4 4-4" />
+                <path d="M5 19h14" />
+              </svg>
+              Save Contact
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-card-modal socials-modal" id="socialsModal" hidden>
+      <button
+        class="contact-card-modal-backdrop"
+        type="button"
+        data-socials-close
+        tabindex="-1"
+        aria-hidden="true"
+      ></button>
+      <div
+        class="contact-card-dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="socialsModalTitle"
+      >
+        <button
+          class="contact-card-close"
+          type="button"
+          data-socials-close
+          aria-label="Close socials"
+          data-i18n-aria-label="socialsCloseLabel"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M6 6 18 18" />
+            <path d="m18 6-12 12" />
+          </svg>
+        </button>
+
+        <div class="contact-card-sheet socials-sheet">
+          <div class="contact-card-header">
+            <img class="contact-card-mark" src="favicon.png" alt="" aria-hidden="true" />
+            <div>
+              <p class="contact-card-eyebrow" data-i18n="socialsEyebrow">Other</p>
+              <h3 class="contact-card-title" id="socialsModalTitle" data-i18n="socialsTitle">Socials</h3>
+            </div>
+          </div>
+
+          <div class="contact-card-list socials-list">
+            <a class="contact-card-row socials-row" href="https://www.linkedin.com/in/niccoloforte/" target="_blank" rel="noreferrer" aria-label="LinkedIn" title="LinkedIn">
+              <span class="socials-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <circle cx="5.2" cy="5.2" r="1.85" />
+                  <path d="M3.8 9.1h2.8V20H3.8z" />
+                  <path d="M10 9.1h2.7v1.55c.52-.98 1.5-1.79 3.16-1.79 2.61 0 4.17 1.67 4.17 4.88V20h-2.9v-5.9c0-1.72-.62-2.69-2.06-2.69-1.59 0-2.34 1.06-2.34 2.69V20H10z" />
+                </svg>
+              </span>
+              <span>
+                <span class="contact-card-label" data-i18n="socialLinkedinLabel">LinkedIn</span>
+                <span class="contact-card-value">linkedin.com/in/niccoloforte</span>
+              </span>
+            </a>
+
+            <a class="contact-card-row socials-row" href="https://github.com/niccoforte" target="_blank" rel="noreferrer" aria-label="GitHub" title="GitHub">
+              <span class="socials-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <path d="M12 3.4a8.8 8.8 0 0 0-2.78 17.15c.44.08.6-.18.6-.41v-1.47c-2.46.53-2.99-1.04-2.99-1.04-.4-1.02-.97-1.28-.97-1.28-.8-.55.06-.54.06-.54.88.06 1.35.91 1.35.91.78 1.34 2.05.95 2.54.73.08-.57.3-.95.54-1.18-1.97-.22-4.03-.98-4.03-4.39 0-.98.35-1.77.91-2.39-.09-.23-.39-1.13.09-2.36 0 0 .75-.24 2.45.91a8.48 8.48 0 0 1 4.45 0c1.7-1.15 2.45-.91 2.45-.91.49 1.23.18 2.13.09 2.36.57.62.91 1.41.91 2.39 0 3.42-2.07 4.16-4.05 4.38.31.27.59.82.59 1.64v2.43c0 .23.16.5.61.41A8.8 8.8 0 0 0 12 3.4Z" />
+                  <path d="M8.9 20.15c-.6-.16-1.16-.42-1.67-.77-.3-.2-.58-.43-.84-.68" />
+                </svg>
+              </span>
+              <span>
+                <span class="contact-card-label" data-i18n="socialGithubLabel">GitHub</span>
+                <span class="contact-card-value">github.com/niccoforte</span>
+              </span>
+            </a>
+
+            <a class="contact-card-row socials-row" href="https://www.instagram.com/niccoforte/" target="_blank" rel="noreferrer" aria-label="Instagram" title="Instagram">
+              <span class="socials-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <rect x="4" y="4" width="16" height="16" rx="4" />
+                  <circle cx="12" cy="12" r="3.5" />
+                  <circle cx="17.2" cy="6.8" r="0.9" fill="currentColor" stroke="none" />
+                </svg>
+              </span>
+              <span>
+                <span class="contact-card-label" data-i18n="socialInstagramLabel">Instagram</span>
+                <span class="contact-card-value">@niccoforte</span>
+              </span>
+            </a>
+
+            <a class="contact-card-row socials-row" href="https://www.facebook.com/niccoloforte/" target="_blank" rel="noreferrer" aria-label="Facebook" title="Facebook">
+              <span class="socials-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <path d="M13.5 20v-6.2h2.2l.33-2.56H13.5V9.6c0-.74.21-1.24 1.27-1.24h1.35V6.08c-.23-.03-1.02-.08-1.95-.08-1.93 0-3.24 1.18-3.24 3.34v1.88H8.8v2.56h2.18V20h2.52Z" />
+                </svg>
+              </span>
+              <span>
+                <span class="contact-card-label">Facebook</span>
+                <span class="contact-card-value">Niccolo Forte</span>
+              </span>
+            </a>
+
+            <a class="contact-card-row socials-row" href="https://www.snapchat.com/add/niccoforte" target="_blank" rel="noreferrer" aria-label="Snapchat" title="Snapchat">
+              <span class="socials-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <path d="M12 4.3c2.7 0 4.32 1.9 4.32 4.55v1.65c0 .42.18.69.55.82l1 .36c.22.08.25.38.04.5-.3.18-.7.34-1.12.46-.3.09-.49.35-.52.66-.1 1.18-.74 1.94-1.86 2.21-.22.06-.4.22-.49.43-.33.82-.95 1.25-1.92 1.25-.68 0-1.25-.21-1.7-.63-.45.42-1.02.63-1.7.63-.97 0-1.59-.43-1.92-1.25-.09-.21-.27-.37-.49-.43-1.12-.27-1.76-1.03-1.86-2.21-.03-.31-.22-.57-.52-.66-.42-.12-.82-.28-1.12-.46-.21-.12-.18-.42.04-.5l1-.36c.37-.13.55-.4.55-.82V8.85c0-2.65 1.62-4.55 4.32-4.55.99 0 1.8.31 2.42.93.62-.62 1.43-.93 2.42-.93Z" />
+                </svg>
+              </span>
+              <span>
+                <span class="contact-card-label" data-i18n="socialSnapchatLabel">Snapchat</span>
+                <span class="contact-card-value">@niccoforte</span>
+              </span>
+            </a>
+
+            <a class="contact-card-row socials-row" href="https://wa.me/393273321244" target="_blank" rel="noreferrer" aria-label="WhatsApp" title="WhatsApp">
+              <span class="socials-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <path d="M19.8 11.65c0 4.3-3.43 7.79-7.66 7.79-1.35 0-2.62-.35-3.72-.97L4.3 19.75l1.34-4c-.64-1.21-.99-2.59-.99-4.1 0-4.3 3.43-7.79 7.66-7.79s7.49 3.49 7.49 7.79Z" />
+                  <path d="M9.55 8.55c.13-.27.28-.28.46-.29h.39c.12 0 .28 0 .43.31.15.3.5 1.18.54 1.27.04.1.07.21.01.31-.05.1-.09.16-.17.25l-.25.28c-.08.09-.17.18-.07.34.09.16.43.72.93 1.16.64.57 1.17.75 1.34.83.17.08.27.07.36-.05.11-.11.43-.5.54-.67.11-.16.24-.13.4-.07.17.05 1.04.5 1.22.59.18.08.3.14.34.22.03.07.03.41-.1.79-.12.37-.8.73-1.1.77-.29.04-.64.13-1.95-.39-1.63-.65-2.68-2.24-2.76-2.35-.08-.11-.67-.92-.67-1.76s.45-1.25.61-1.44Z" />
+                </svg>
+              </span>
+              <span>
+                <span class="contact-card-label" data-i18n="socialWhatsappLabel">WhatsApp</span>
+                <span class="contact-card-value">+39 327 3321244</span>
+              </span>
+            </a>
+
+            <a class="contact-card-row socials-row" href="tel:+447375136980" aria-label="Phone" title="Phone">
+              <span class="socials-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <path d="M6.62 10.79a15.46 15.46 0 0 0 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.11.37 2.31.57 3.57.57.56 0 1 .45 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.49c.55 0 1 .44 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.19 2.2Z" />
+                </svg>
+              </span>
+              <span>
+                <span class="contact-card-label" data-i18n="socialPhoneLabel">Phone</span>
+                <span class="contact-card-value">+44 7375 136980</span>
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <footer class="site-footer">
       <div class="section-inner footer-inner">
         <div class="footer-links">
           <a href="index.html" data-i18n="navHome">Home</a>
           <a href="assets/Niccolo-Forte-CV.pdf" target="_blank" rel="noreferrer">CV</a>
+          <button class="footer-link-button" type="button" data-contact-trigger data-i18n="contactCardLabel">
+            Contact
+          </button>
         </div>
-        <p>- Niccolò Forte - <span id="year"></span> -</p>
+        <p>- Niccolò Forte &middot; <span id="year"></span> -</p>
       </div>
     </footer>
 

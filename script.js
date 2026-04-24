@@ -1,9 +1,27 @@
-const navToggle = document.getElementById("navToggle");
+﻿const navToggle = document.getElementById("navToggle");
 const siteNav = document.getElementById("siteNav");
 const yearEl = document.getElementById("year");
 const themeToggle = document.getElementById("themeToggle");
 const languageSelect = document.getElementById("languageSelect");
 const faviconEl = document.getElementById("siteFavicon");
+const contactTriggers = Array.from(document.querySelectorAll("[data-contact-trigger]"));
+const contactCardModal = document.getElementById("contactCardModal");
+const cvPreviewButton = document.getElementById("cvPreviewButton");
+const cvModal = document.getElementById("cvModal");
+const shareTriggers = Array.from(document.querySelectorAll("[data-share-trigger]"));
+const shareModal = document.getElementById("shareModal");
+const shareCopyButton = document.getElementById("shareCopyButton");
+const shareEmailLink = document.getElementById("shareEmailLink");
+const shareLinkedInLink = document.getElementById("shareLinkedInLink");
+const shareFacebookLink = document.getElementById("shareFacebookLink");
+const shareXLink = document.getElementById("shareXLink");
+const shareWhatsAppLink = document.getElementById("shareWhatsAppLink");
+const shareStatus = document.getElementById("shareStatus");
+const socialsTriggers = Array.from(document.querySelectorAll("[data-socials-trigger]"));
+const socialsModal = document.getElementById("socialsModal");
+const contactForm = document.getElementById("contactForm");
+const contactFormStatus = document.getElementById("contactFormStatus");
+const contactSubmitButton = document.getElementById("contactSubmitButton");
 const interestModal = document.getElementById("interestModal");
 const interestModalImage = document.getElementById("interestModalImage");
 const interestModalCaption = document.getElementById("interestModalCaption");
@@ -57,6 +75,35 @@ const translations = {
         githubLabel: "GitHub",
         linkedinLabel: "LinkedIn",
         modalCloseLabel: "Chiudi dettaglio",
+        contactCardCloseLabel: "Chiudi scheda contatto",
+        cvModalCloseLabel: "Chiudi anteprima del CV",
+        shareModalCloseLabel: "Chiudi opzioni di condivisione",
+        shareTriggerLabel: "Condividi questa pagina",
+        socialsCloseLabel: "Chiudi social",
+      },
+      text: {
+        shareLabel: "Condividi",
+        shareEyebrow: "Condividi",
+        shareTitle: "Condividi questa pagina",
+        shareIntro: "Copia il link o invia questa pagina tramite la piattaforma che preferisci.",
+        shareCopyLabel: "Copia link",
+        shareEmailLabel: "Email",
+        shareLinkedinLabel: "LinkedIn",
+        shareFacebookLabel: "Facebook",
+        shareXLabel: "X",
+        shareWhatsAppLabel: "WhatsApp",
+        shareCopiedMessage: "Link copiato negli appunti.",
+        shareCopyErrorMessage: "Non sono riuscito a copiare il link. Puoi copiarlo direttamente dalla barra dell'indirizzo.",
+        socialsLabel: "Social",
+        socialsEyebrow: "Altro",
+        socialsTitle: "Social",
+        socialsIntro: "I miei canali pubblici.",
+        socialLinkedinLabel: "LinkedIn",
+        socialGithubLabel: "GitHub",
+        socialInstagramLabel: "Instagram",
+        socialSnapchatLabel: "Snapchat",
+        socialWhatsappLabel: "WhatsApp",
+        socialPhoneLabel: "Telefono",
       },
       themeLabels: {
         lightLabel: "Chiaro",
@@ -83,12 +130,12 @@ const translations = {
         navSoftware: "Software",
         navBlog: "Blog",
         navContact: "Contatti",
-        heroRole: "Dottorando in Ingegneria Aerospaziale",
+        heroRole: "Ingegnere aerospaziale e data scientist",
         heroSubtitleDegree: "Dottorando in Ingegneria Aerospaziale",
         heroSubtitleUniversity: "Queen Mary University of London",
         heroDetail: "Metamateriali reticolari - Meccanica computazionale - Machine learning",
-        aboutTitle: "Abstract",
-        researchTitle: "Interessi di Ricerca",
+        aboutTitle: "Profilo",
+        researchTitle: "Interessi di ricerca",
         interest1Caption: "Fig. 1: Concetto di cella unitaria reticolare distorta",
         interest1Title: "Metamateriali meccanici",
         interest1Text:
@@ -104,20 +151,42 @@ const translations = {
         interest4Caption: "Fig. 4: Studi di progettazione aerodinamica e strutturale",
         interest4Title: "Ingegneria aerospaziale applicata",
         interest4Text:
-          "Efficienza dei materiali, ottimizzazione di forma e topologia, e le questioni di meccanica dietro le strutture del volo del futuro.",
+          "Efficienza dei materiali, ottimizzazione di forma e topologia, e i principi di meccanica che guidano le strutture del volo del futuro.",
         publicationsTitle: "Pubblicazioni",
-        experienceTitle: "Esperienza di ricerca e tecnica",
-        softwareTitle: "Software e lavoro digitale",
+        experienceTitle: "Esperienza di ricerca e attività tecnica",
+        softwareTitle: "Software e attività digitali",
         educationTitle: "Formazione",
-        writingTitle: "Scrittura",
+        writingTitle: "Scritti",
         writingIntro:
-          "Note in sviluppo su metamateriali, modellazione, giudizio ingegneristico e quelle piccole decisioni che rendono il lavoro tecnico più affidabile.",
+          "Note in preparazione su metamateriali, modellazione, giudizio ingegneristico e quelle piccole decisioni che rendono il lavoro tecnico più affidabile.",
         viewAllNotes: "Vedi tutte le note",
         contactTitle: "Contatti",
         contactIntro:
-          "Sono sempre felice di sentire persone che lavorano su meccanica strutturale, ricerca aerospaziale, metamateriali, software ingegneristico o insegnamento tecnico ben fatto.",
+          "Mi fa sempre piacere entrare in contatto con persone che lavorano su meccanica strutturale, ricerca aerospaziale, metamateriali, software ingegneristico o insegnamento tecnico di qualità.",
         contactCardLabel: "Scheda contatto",
+        contactFormIntro:
+          "Oppure scrivimi senza lasciare questa pagina, indicando il tuo nome, indirizzo email e messaggio.",
+        formNameLabel: "Nome",
+        formEmailLabel: "Indirizzo email",
+        formMessageLabel: "Messaggio",
+        formSubmitLabel: "Invia messaggio",
+        formSendingLabel: "Invio in corso...",
+        formSuccessMessage: "Grazie per il tuo messaggio. Ti risponderò il prima possibile.",
+        formErrorMessage:
+          "Non sono riuscito a inviare il messaggio in questo momento. Riprova tra poco oppure scrivimi via email.",
+        saveContactLabel: "Salva contatto",
+        contactCardEyebrow: "Scheda di contatto personale",
+        contactCardRole: "Dottorando in Ingegneria Aerospaziale",
+        contactCardWorkEmailLabel: "Email professionale",
+        contactCardPersonalEmailLabel: "Email personale",
+        contactCardUkPhoneLabel: "Telefono (UK)",
+        contactCardItPhoneLabel: "Telefono (IT)",
+        contactCardWebsiteLabel: "Sito web",
+        contactCardLinkedInLabel: "LinkedIn",
+        contactCardGitHubLabel: "GitHub",
         cvLabel: "Curriculum Vitae",
+        cvPreviewEyebrow: "Anteprima documento",
+        cvOpenNewPageLabel: "Apri in una nuova pagina",
       },
       html: {
         aboutCopy: `
@@ -129,16 +198,16 @@ const translations = {
             strutturale guidata dal machine learning.
           </p>
           <p>
-            Prima di iniziare il dottorato ho conseguito una laurea triennale con First Class Honours
-            in Mechanical Engineering alla Queen Mary. La mia tesi di laurea ha esplorato la
+            Prima di iniziare il dottorato ho conseguito una laurea triennale in ingegneria
+            meccanica con First Class Honours alla Queen Mary. La mia tesi di laurea ha esplorato la
             previsione dei coefficienti aerodinamici di profili alari tramite machine learning, e
-            quello stesso interesse per il calcolo continua a guidare il mio approccio alla
+            quel medesimo interesse per il calcolo continua a guidare il mio approccio alla
             meccanica, alla simulazione e alla progettazione.
           </p>
           <p>
             Essendo cresciuto tra Washington, Gerusalemme, Roma, Bruxelles e Londra, tendo a portare
             nella ricerca una prospettiva internazionale e interdisciplinare. Accanto al lavoro di
-            dottorato, insegno in diversi moduli di ingegneria, lavoro con dati e software, e tengo
+            dottorato, insegno in diversi moduli di ingegneria, mi occupo di dati e software, e tengo
             molto a come le idee tecniche possano essere spiegate con chiarezza e sviluppate con cura.
           </p>
         `,
@@ -182,7 +251,7 @@ const translations = {
         `,
         experience2: `
           <p class="timeline-meta">2024-presente</p>
-          <h3>Teaching assistant in diversi moduli di ingegneria</h3>
+          <h3>Assistente alla didattica in vari moduli di ingegneria</h3>
           <p class="timeline-subtle">Queen Mary University of London</p>
           <p>
             Supporto alla didattica in fluidodinamica, CFD, meccanica dei solidi, FEA, termodinamica,
@@ -191,7 +260,7 @@ const translations = {
         `,
         experience3: `
           <p class="timeline-meta">2022</p>
-          <h3>Data Science Intern</h3>
+          <h3>Tirocinio in data science</h3>
           <p class="timeline-subtle">Red Bull</p>
           <p>
             Lavoro su stime di mercato, valutazione e-commerce e analisi commerciali, rafforzando il
@@ -236,7 +305,7 @@ const translations = {
         `,
         software3: `
           <p class="timeline-meta">2020-presente</p>
-          <h3>Freelance UI e UX Tester</h3>
+          <h3>Tester freelance UI/UX</h3>
           <p class="timeline-subtle">Test di prototipi e prodotti</p>
           <p>
             Test di esperienze software e di prodotto in fase iniziale per aziende come Meta,
@@ -256,7 +325,7 @@ const translations = {
         `,
         education2: `
           <div>
-            <p class="education-degree">Laurea triennale in Mechanical Engineering - First Class Honours</p>
+            <p class="education-degree">Laurea triennale in ingegneria meccanica - First Class Honours</p>
             <p class="education-school">Queen Mary University of London</p>
             <p class="education-note">
               Tesi: Modelli predittivi dei coefficienti aerodinamici sperimentali di profili alari tramite machine learning
@@ -293,7 +362,7 @@ const translations = {
             <span class="tag tag-muted">Simulazione</span>
           </div>
           <a class="inline-link" href="blog.html">
-            <h3>Rendere i workflow agli elementi finiti più facili da fidarsi</h3>
+            <h3>Rendere i workflow agli elementi finiti più affidabili</h3>
           </a>
           <p>
             Riflessioni su scelte di mesh, strategia di campionamento e sulla differenza tra un
@@ -354,7 +423,7 @@ const translations = {
             <span class="tag">Previsto</span>
             <span class="tag tag-muted">Simulazione</span>
           </div>
-          <h2 class="blog-entry-title">Rendere i workflow agli elementi finiti più facili da fidarsi</h2>
+          <h2 class="blog-entry-title">Rendere i workflow agli elementi finiti più affidabili</h2>
           <p>
             Pensieri su mesh, condizioni al contorno, campionamento adattivo e sulle abitudini che
             rendono la simulazione meno rituale e più ingegneria.
@@ -383,6 +452,26 @@ let syncThemeToggle = () => {};
 let activeInterestId = null;
 let lastInterestTrigger = null;
 let invertedFaviconHref = null;
+let lastContactCardTrigger = null;
+let lastCvTrigger = null;
+let lastShareTrigger = null;
+let lastSocialsTrigger = null;
+
+const getTextTranslation = (key, fallback = "") => {
+  const languageBundle = translations[activeLanguage] || {};
+  const pageBundle = languageBundle[pageName] || {};
+  return pageBundle.text?.[key] ?? languageBundle.common?.text?.[key] ?? fallback;
+};
+
+const syncModalOpenState = () => {
+  const hasOpenModal =
+    Boolean(interestModal && !interestModal.hidden) ||
+    Boolean(contactCardModal && !contactCardModal.hidden) ||
+    Boolean(cvModal && !cvModal.hidden) ||
+    Boolean(shareModal && !shareModal.hidden) ||
+    Boolean(socialsModal && !socialsModal.hidden);
+  document.body.classList.toggle("modal-open", hasOpenModal);
+};
 
 const interestDetails = {
   en: {
@@ -658,7 +747,7 @@ const openInterestModal = (interestId, trigger) => {
   lastInterestTrigger = trigger || null;
   renderInterestModal(interestId);
   interestModal.hidden = false;
-  document.body.classList.add("modal-open");
+  syncModalOpenState();
   const closeButton = interestModal.querySelector(".interest-modal-close");
   if (closeButton) {
     closeButton.focus();
@@ -671,12 +760,162 @@ const closeInterestModal = () => {
   }
 
   interestModal.hidden = true;
-  document.body.classList.remove("modal-open");
+  syncModalOpenState();
   activeInterestId = null;
 
   if (lastInterestTrigger) {
     lastInterestTrigger.focus();
     lastInterestTrigger = null;
+  }
+};
+
+const openContactCardModal = (trigger) => {
+  if (!contactCardModal) {
+    return;
+  }
+
+  lastContactCardTrigger = trigger || null;
+  contactCardModal.hidden = false;
+  syncModalOpenState();
+  const closeButton = contactCardModal.querySelector(".contact-card-close");
+  if (closeButton) {
+    closeButton.focus();
+  }
+};
+
+const closeContactCardModal = () => {
+  if (!contactCardModal || contactCardModal.hidden) {
+    return;
+  }
+
+  contactCardModal.hidden = true;
+  syncModalOpenState();
+
+  if (lastContactCardTrigger) {
+    lastContactCardTrigger.focus();
+    lastContactCardTrigger = null;
+  }
+};
+
+const openCvModal = (trigger) => {
+  if (!cvModal) {
+    return;
+  }
+
+  lastCvTrigger = trigger || null;
+  cvModal.hidden = false;
+  syncModalOpenState();
+  const closeButton = cvModal.querySelector(".cv-modal-close");
+  if (closeButton) {
+    closeButton.focus();
+  }
+};
+
+const closeCvModal = () => {
+  if (!cvModal || cvModal.hidden) {
+    return;
+  }
+
+  cvModal.hidden = true;
+  syncModalOpenState();
+
+  if (lastCvTrigger) {
+    lastCvTrigger.focus();
+    lastCvTrigger = null;
+  }
+};
+
+const getSharePayload = () => {
+  const pageUrl = window.location.href;
+  const pageTitle = document.title;
+  const shareText = `${pageTitle} - ${pageUrl}`;
+  return { pageUrl, pageTitle, shareText };
+};
+
+const updateShareLinks = () => {
+  const { pageUrl, pageTitle, shareText } = getSharePayload();
+  const encodedUrl = encodeURIComponent(pageUrl);
+  const encodedTitle = encodeURIComponent(pageTitle);
+  const encodedText = encodeURIComponent(shareText);
+
+  if (shareEmailLink) {
+    shareEmailLink.href = `mailto:?subject=${encodedTitle}&body=${encodedText}`;
+  }
+
+  if (shareLinkedInLink) {
+    shareLinkedInLink.href = `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`;
+  }
+
+  if (shareFacebookLink) {
+    shareFacebookLink.href = `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`;
+  }
+
+  if (shareXLink) {
+    shareXLink.href = `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`;
+  }
+
+  if (shareWhatsAppLink) {
+    shareWhatsAppLink.href = `https://wa.me/?text=${encodedText}`;
+  }
+};
+
+const openShareModal = (trigger) => {
+  if (!shareModal) {
+    return;
+  }
+
+  lastShareTrigger = trigger || null;
+  updateShareLinks();
+  if (shareStatus) {
+    shareStatus.textContent = "";
+  }
+  shareModal.hidden = false;
+  syncModalOpenState();
+  const closeButton = shareModal.querySelector(".share-modal-close");
+  if (closeButton) {
+    closeButton.focus();
+  }
+};
+
+const closeShareModal = () => {
+  if (!shareModal || shareModal.hidden) {
+    return;
+  }
+
+  shareModal.hidden = true;
+  syncModalOpenState();
+
+  if (lastShareTrigger) {
+    lastShareTrigger.focus();
+    lastShareTrigger = null;
+  }
+};
+
+const openSocialsModal = (trigger) => {
+  if (!socialsModal) {
+    return;
+  }
+
+  lastSocialsTrigger = trigger || null;
+  socialsModal.hidden = false;
+  syncModalOpenState();
+  const closeButton = socialsModal.querySelector(".contact-card-close");
+  if (closeButton) {
+    closeButton.focus();
+  }
+};
+
+const closeSocialsModal = () => {
+  if (!socialsModal || socialsModal.hidden) {
+    return;
+  }
+
+  socialsModal.hidden = true;
+  syncModalOpenState();
+
+  if (lastSocialsTrigger) {
+    lastSocialsTrigger.focus();
+    lastSocialsTrigger = null;
   }
 };
 
@@ -824,10 +1063,26 @@ const applyLanguage = (language) => {
     renderInterestModal(activeInterestId);
   }
 
+  if (contactFormStatus?.dataset.statusKey) {
+    contactFormStatus.textContent = getTextTranslation(
+      contactFormStatus.dataset.statusKey,
+      contactFormStatus.textContent
+    );
+  }
+
+  if (contactSubmitButton && !contactSubmitButton.disabled) {
+    contactSubmitButton.textContent = getTextTranslation("formSubmitLabel", "Send Message");
+  }
+
+  if (shareStatus?.dataset.statusKey) {
+    shareStatus.textContent = getTextTranslation(shareStatus.dataset.statusKey, shareStatus.textContent);
+  }
+
   updateLocalizedLinks(activeLanguage);
   updateLanguageSwitcher(activeLanguage);
   syncCanonicalLanguageUrl(activeLanguage);
   window.localStorage.setItem("site-language", activeLanguage);
+  updateShareLinks();
 };
 
 const colorSchemeQuery = window.matchMedia("(prefers-color-scheme: dark)");
@@ -903,6 +1158,140 @@ if (interestModal) {
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape") {
       closeInterestModal();
+      closeContactCardModal();
+      closeCvModal();
+    }
+  });
+}
+
+if (contactTriggers.length > 0 && contactCardModal) {
+  contactTriggers.forEach((trigger) => {
+    trigger.addEventListener("click", () => {
+      openContactCardModal(trigger);
+    });
+  });
+
+  contactCardModal.querySelectorAll("[data-contact-card-close]").forEach((element) => {
+    element.addEventListener("click", closeContactCardModal);
+  });
+}
+
+if (cvPreviewButton && cvModal) {
+  cvPreviewButton.addEventListener("click", () => {
+    openCvModal(cvPreviewButton);
+  });
+
+  cvModal.querySelectorAll("[data-cv-close]").forEach((element) => {
+    element.addEventListener("click", closeCvModal);
+  });
+}
+
+if (shareTriggers.length > 0 && shareModal) {
+  shareTriggers.forEach((trigger) => {
+    trigger.addEventListener("click", () => {
+      openShareModal(trigger);
+    });
+  });
+
+  shareModal.querySelectorAll("[data-share-close]").forEach((element) => {
+    element.addEventListener("click", closeShareModal);
+  });
+
+  if (shareCopyButton) {
+    shareCopyButton.addEventListener("click", async () => {
+      const { pageUrl } = getSharePayload();
+
+      try {
+        await navigator.clipboard.writeText(pageUrl);
+        if (shareStatus) {
+          shareStatus.dataset.statusKey = "shareCopiedMessage";
+          shareStatus.textContent = getTextTranslation("shareCopiedMessage", "Link copied to clipboard.");
+        }
+      } catch {
+        if (shareStatus) {
+          shareStatus.dataset.statusKey = "shareCopyErrorMessage";
+          shareStatus.textContent = getTextTranslation(
+            "shareCopyErrorMessage",
+            "I couldn't copy the link automatically. You can copy it directly from the address bar."
+          );
+        }
+      }
+    });
+  }
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      closeShareModal();
+    }
+  });
+}
+
+if (socialsTriggers.length > 0 && socialsModal) {
+  socialsTriggers.forEach((trigger) => {
+    trigger.addEventListener("click", () => {
+      openSocialsModal(trigger);
+    });
+  });
+
+  socialsModal.querySelectorAll("[data-socials-close]").forEach((element) => {
+    element.addEventListener("click", closeSocialsModal);
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      closeSocialsModal();
+    }
+  });
+}
+
+if (contactForm && contactFormStatus && contactSubmitButton) {
+  contactForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    const formData = new FormData(contactForm);
+    const payload = {
+      name: String(formData.get("name") || "").trim(),
+      email: String(formData.get("email") || "").trim(),
+      message: String(formData.get("message") || "").trim(),
+      company: String(formData.get("company") || "").trim(),
+    };
+
+    contactFormStatus.className = "contact-form-status";
+    contactFormStatus.dataset.statusKey = "formSendingLabel";
+    contactFormStatus.textContent = getTextTranslation("formSendingLabel", "Sending...");
+    contactSubmitButton.disabled = true;
+    contactSubmitButton.textContent = getTextTranslation("formSendingLabel", "Sending...");
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      if (!response.ok) {
+        throw new Error("Request failed");
+      }
+
+      contactForm.reset();
+      contactFormStatus.classList.add("is-success");
+      contactFormStatus.dataset.statusKey = "formSuccessMessage";
+      contactFormStatus.textContent = getTextTranslation(
+        "formSuccessMessage",
+        "Thank you for your message. I will get back to you as soon as possible."
+      );
+    } catch {
+      contactFormStatus.classList.add("is-error");
+      contactFormStatus.dataset.statusKey = "formErrorMessage";
+      contactFormStatus.textContent = getTextTranslation(
+        "formErrorMessage",
+        "I couldn't send your message just now. Please try again in a moment or email me directly."
+      );
+    } finally {
+      contactSubmitButton.disabled = false;
+      contactSubmitButton.textContent = getTextTranslation("formSubmitLabel", "Send Message");
     }
   });
 }
@@ -976,3 +1365,5 @@ if ("IntersectionObserver" in window && sectionLinks.length > 0 && sections.leng
 
   sections.forEach((section) => navObserver.observe(section));
 }
+
+
