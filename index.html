@@ -847,11 +847,12 @@
             </div>
 
             <div class="cv-modal-viewer">
-              <iframe
-                src="assets/Niccolo-Forte-CV.pdf#page=1&view=Fit"
-                title="Curriculum Vitae preview"
-                loading="lazy"
-              ></iframe>
+              <div class="cv-modal-toolbar" aria-label="CV zoom controls">
+                <button type="button" class="cv-zoom-button" id="cvZoomOut" aria-label="Zoom out">-</button>
+                <span class="cv-zoom-label" id="cvZoomLabel">100%</span>
+                <button type="button" class="cv-zoom-button" id="cvZoomIn" aria-label="Zoom in">+</button>
+              </div>
+              <div class="cv-pdf-pages" id="cvPdfPages" aria-label="Curriculum Vitae preview"></div>
             </div>
           </div>
         </div>
@@ -1095,4 +1096,5 @@
     <script src="script.js"></script>
   </body>
 </html>
+
 

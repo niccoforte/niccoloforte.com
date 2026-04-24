@@ -8,6 +8,10 @@ const contactTriggers = Array.from(document.querySelectorAll("[data-contact-trig
 const contactCardModal = document.getElementById("contactCardModal");
 const cvPreviewButton = document.getElementById("cvPreviewButton");
 const cvModal = document.getElementById("cvModal");
+const cvPdfPages = document.getElementById("cvPdfPages");
+const cvZoomOutButton = document.getElementById("cvZoomOut");
+const cvZoomInButton = document.getElementById("cvZoomIn");
+const cvZoomLabel = document.getElementById("cvZoomLabel");
 const shareTriggers = Array.from(document.querySelectorAll("[data-share-trigger]"));
 const shareModal = document.getElementById("shareModal");
 const shareCopyButton = document.getElementById("shareCopyButton");
@@ -456,6 +460,10 @@ let lastContactCardTrigger = null;
 let lastCvTrigger = null;
 let lastShareTrigger = null;
 let lastSocialsTrigger = null;
+let cvPdfModulePromise = null;
+let cvPdfDocumentPromise = null;
+let cvPreviewZoom = 1;
+let cvPreviewRenderToken = 0;
 
 const getTextTranslation = (key, fallback = "") => {
   const languageBundle = translations[activeLanguage] || {};
@@ -797,6 +805,98 @@ const closeContactCardModal = () => {
   }
 };
 
+const updateCvZoomLabel = () => {
+  if (cvZoomLabel) {
+    cvZoomLabel.textContent = `${Math.round(cvPreviewZoom * 100)}%`;
+  }
+};
+
+const ensureCvPdfModule = async () => {
+  if (!cvPdfModulePromise) {
+    cvPdfModulePromise = import("https://cdn.jsdelivr.net/npm/pdfjs-dist@5.4.394/build/pdf.mjs").then(
+      (pdfjsLib) => {
+        pdfjsLib.GlobalWorkerOptions.workerSrc =
+          "https://cdn.jsdelivr.net/npm/pdfjs-dist@5.4.394/build/pdf.worker.mjs";
+        return pdfjsLib;
+      },
+    );
+  }
+
+  return cvPdfModulePromise;
+};
+
+const getCvPdfDocument = async () => {
+  if (!cvPdfDocumentPromise) {
+    cvPdfDocumentPromise = ensureCvPdfModule().then((pdfjsLib) =>
+      pdfjsLib.getDocument("assets/Niccolo-Forte-CV.pdf").promise,
+    );
+  }
+
+  return cvPdfDocumentPromise;
+};
+
+const renderCvPreview = async () => {
+  if (!cvModal || cvModal.hidden || !cvPdfPages) {
+    return;
+  }
+
+  const renderToken = ++cvPreviewRenderToken;
+  updateCvZoomLabel();
+  cvPdfPages.innerHTML = "";
+
+  try {
+    const pdfDocument = await getCvPdfDocument();
+    const containerWidth = Math.max(cvPdfPages.clientWidth - 2, 220);
+
+    for (let pageNumber = 1; pageNumber <= pdfDocument.numPages; pageNumber += 1) {
+      const page = await pdfDocument.getPage(pageNumber);
+      const baseViewport = page.getViewport({ scale: 1 });
+      const fitScale = containerWidth / baseViewport.width;
+      const viewport = page.getViewport({ scale: fitScale * cvPreviewZoom });
+
+      if (renderToken !== cvPreviewRenderToken) {
+        return;
+      }
+
+      const canvas = document.createElement("canvas");
+      const canvasContext = canvas.getContext("2d");
+      const pageWrapper = document.createElement("div");
+      const dpr = window.devicePixelRatio || 1;
+
+      if (!canvasContext) {
+        continue;
+      }
+
+      pageWrapper.className = "cv-pdf-page";
+      canvas.width = Math.ceil(viewport.width * dpr);
+      canvas.height = Math.ceil(viewport.height * dpr);
+      canvas.style.width = `${viewport.width}px`;
+      canvas.style.height = `${viewport.height}px`;
+      canvasContext.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+      await page.render({
+        canvasContext,
+        viewport,
+      }).promise;
+
+      if (renderToken !== cvPreviewRenderToken) {
+        return;
+      }
+
+      pageWrapper.appendChild(canvas);
+      cvPdfPages.appendChild(pageWrapper);
+    }
+  } catch (error) {
+    cvPdfPages.innerHTML =
+      '<p class="cv-pdf-status">Preview unavailable here. Use Open in New Page.</p>';
+  }
+};
+
+const scheduleCvPreviewRender = () => {
+  window.requestAnimationFrame(() => {
+    renderCvPreview();
+  });
+};
 const openCvModal = (trigger) => {
   if (!cvModal) {
     return;
@@ -805,6 +905,7 @@ const openCvModal = (trigger) => {
   lastCvTrigger = trigger || null;
   cvModal.hidden = false;
   syncModalOpenState();
+  scheduleCvPreviewRender();
   const closeButton = cvModal.querySelector(".cv-modal-close");
   if (closeButton) {
     closeButton.focus();
@@ -1184,6 +1285,26 @@ if (cvPreviewButton && cvModal) {
   cvModal.querySelectorAll("[data-cv-close]").forEach((element) => {
     element.addEventListener("click", closeCvModal);
   });
+
+  if (cvZoomOutButton) {
+    cvZoomOutButton.addEventListener("click", () => {
+      cvPreviewZoom = Math.max(0.85, Number((cvPreviewZoom - 0.15).toFixed(2)));
+      scheduleCvPreviewRender();
+    });
+  }
+
+  if (cvZoomInButton) {
+    cvZoomInButton.addEventListener("click", () => {
+      cvPreviewZoom = Math.min(2.4, Number((cvPreviewZoom + 0.15).toFixed(2)));
+      scheduleCvPreviewRender();
+    });
+  }
+
+  window.addEventListener("resize", () => {
+    if (!cvModal.hidden) {
+      scheduleCvPreviewRender();
+    }
+  });
 }
 
 if (shareTriggers.length > 0 && shareModal) {
@@ -1390,6 +1511,11 @@ if ("IntersectionObserver" in window && sectionLinks.length > 0 && sections.leng
 
   sections.forEach((section) => navObserver.observe(section));
 }
+
+
+
+
+
 
 
 

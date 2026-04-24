@@ -164,6 +164,12 @@ body.dark-mode .site-mark {
   color: var(--muted);
 }
 
+.site-nav a {
+  font-family: inherit;
+  font-size: inherit;
+  letter-spacing: inherit;
+}
+
 .site-nav a[aria-current="page"] {
   color: var(--muted);
 }
@@ -1329,11 +1335,72 @@ body.dark-mode .cv-modal-close {
   background: var(--bg-soft);
 }
 
-.cv-modal-viewer iframe {
+.cv-modal-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 0.7rem 0.9rem;
+  border-bottom: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.52);
+}
+
+body.dark-mode .cv-modal-toolbar {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.cv-zoom-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.cv-zoom-label {
+  min-width: 3.2rem;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.cv-pdf-pages {
+  max-height: min(68vh, 48rem);
+  overflow-y: auto;
+  padding: 1rem 0.85rem 1.15rem;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+.cv-pdf-page {
   width: 100%;
-  height: min(74vh, 56rem);
-  border: 0;
+}
+
+.cv-pdf-page + .cv-pdf-page {
+  margin-top: 1rem;
+}
+
+.cv-pdf-page canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--border);
   background: #fff;
+}
+
+.cv-pdf-status {
+  margin: 0;
+  padding: 1.4rem 1rem;
+  text-align: center;
+  color: var(--muted);
 }
 
 .blog-hero {
@@ -1608,6 +1675,14 @@ body.dark-mode .cv-modal-close {
   .nav-toggle:not([aria-expanded="true"]) span:nth-child(2) {
     transform: translate(-50%, -50%);
   }
+  .nav-toggle:not([aria-expanded="true"]) span:nth-child(1) {
+    top: 23%;
+  }
+
+  .nav-toggle:not([aria-expanded="true"]) span:nth-child(3) {
+    bottom: 23%;
+  }
+
   .site-nav {
     position: fixed;
     top: 4.5rem;
@@ -1781,17 +1856,18 @@ body.dark-mode .cv-modal-close {
     flex-direction: column;
     padding-right: 2.4rem;
   }
-
   .cv-modal-open-button {
     width: 100%;
   }
 
-  .cv-modal-viewer iframe {
-    height: min(68vh, 42rem);
+  .cv-modal-toolbar {
+    gap: 0.65rem;
+    padding-inline: 0.75rem;
   }
 
-  .cv-modal-viewer {
-    min-height: min(68vh, 42rem);
+  .cv-pdf-pages {
+    max-height: min(62vh, 38rem);
+    padding-inline: 0.65rem;
   }
 
   .interest-modal {
@@ -1834,3 +1910,4 @@ body.dark-mode .cv-modal-close {
     font-size: 1.875rem;
   }
 }
+
