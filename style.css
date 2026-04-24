@@ -1,4 +1,4 @@
-:root {
+﻿:root {
   --bg: #f6f2ea;
   --bg-soft: #f1ece3;
   --card: #efe8de;
@@ -996,6 +996,7 @@ body.dark-mode .interest-modal-close {
   position: relative;
   z-index: 1;
   width: min(100%, 34rem);
+  max-height: calc(100vh - 3rem);
 }
 
 .contact-card-close {
@@ -1036,6 +1037,9 @@ body.dark-mode .contact-card-close {
   background: var(--bg);
   padding: 1.6rem;
   box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.18);
+  max-height: calc(100vh - 3rem);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .contact-card-header {
@@ -1250,6 +1254,7 @@ body.dark-mode .share-modal-close {
   position: relative;
   z-index: 1;
   width: min(100%, 58rem);
+  max-height: calc(100vh - 3rem);
 }
 
 .cv-modal-close {
@@ -1290,6 +1295,9 @@ body.dark-mode .cv-modal-close {
   background: var(--bg);
   padding: 1.2rem;
   box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.18);
+  max-height: calc(100vh - 3rem);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .cv-modal-header {
@@ -1476,11 +1484,23 @@ body.dark-mode .cv-modal-close {
 }
 
 @media (max-width: 1035px) {
+  .nav-frame {
+    flex-wrap: wrap;
+  }
+
   .nav-toggle {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    order: 3;
+    flex: 0 0 auto;
+    z-index: 25;
   }
 
   .site-nav {
+    order: 4;
+    width: 100%;
     position: absolute;
     top: 4.5rem;
     left: 1.5rem;
@@ -1532,11 +1552,18 @@ body.dark-mode .cv-modal-close {
   }
 
   .header-tools {
-    margin-left: 0;
+    order: 2;
+    margin-left: auto;
+    flex: 0 1 auto;
+    min-width: 0;
   }
 }
 
 @media (max-width: 640px) {
+  .nav-frame {
+    gap: 0.6rem;
+  }
+
   .frame,
   .section-inner,
   .narrow {
@@ -1620,6 +1647,7 @@ body.dark-mode .cv-modal-close {
 
   .contact-card-sheet {
     padding: 1.2rem;
+    max-height: calc(100vh - 1.5rem);
   }
 
   .contact-card-header {
@@ -1645,6 +1673,7 @@ body.dark-mode .cv-modal-close {
 
   .cv-modal-shell {
     padding: 1rem;
+    max-height: calc(100vh - 1.5rem);
   }
 
   .cv-modal-header {
@@ -1659,6 +1688,10 @@ body.dark-mode .cv-modal-close {
 
   .cv-modal-viewer iframe {
     height: min(68vh, 42rem);
+  }
+
+  .cv-modal-viewer {
+    min-height: min(68vh, 42rem);
   }
 
   .interest-modal {
@@ -1701,3 +1734,5 @@ body.dark-mode .cv-modal-close {
     font-size: 1.875rem;
   }
 }
+
+

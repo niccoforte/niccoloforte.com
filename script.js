@@ -802,6 +802,11 @@ const openCvModal = (trigger) => {
     return;
   }
 
+  if (window.matchMedia("(max-width: 700px)").matches) {
+    window.open("assets/Niccolo-Forte-CV.pdf#view=FitH", "_blank", "noopener,noreferrer");
+    return;
+  }
+
   lastCvTrigger = trigger || null;
   cvModal.hidden = false;
   syncModalOpenState();
@@ -1365,5 +1370,6 @@ if ("IntersectionObserver" in window && sectionLinks.length > 0 && sections.leng
 
   sections.forEach((section) => navObserver.observe(section));
 }
+
 
 
