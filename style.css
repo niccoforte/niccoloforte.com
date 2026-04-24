@@ -315,6 +315,9 @@ body.dark-mode .site-mark {
   stroke-width: 1.7;
 }
 
+.theme-toggle-icon-moon svg {
+  transform: translateX(-0.22rem);
+}
 .theme-toggle-thumb {
   position: absolute;
   top: 0.22rem;
@@ -1950,4 +1953,20 @@ body.dark-mode .cv-modal-toolbar {
     font-size: 1.875rem;
   }
 }
+
+
+@media (min-width: 641px) {
+  .site-nav a[aria-current="page"] {
+    color: inherit;
+  }
+
+  .site-nav a[aria-current="page"]:hover,
+  .site-nav a[aria-current="page"]:focus-visible {
+    color: var(--muted);
+  }
+}
+
+
+
+
 
