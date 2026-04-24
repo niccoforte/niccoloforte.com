@@ -1302,16 +1302,41 @@ if (contactForm && contactFormStatus && contactSubmitButton) {
 }
 
 if (navToggle && siteNav) {
+  const closeNavMenu = () => {
+    siteNav.classList.remove("open");
+    navToggle.setAttribute("aria-expanded", "false");
+  };
+
   navToggle.addEventListener("click", () => {
     const isOpen = siteNav.classList.toggle("open");
     navToggle.setAttribute("aria-expanded", String(isOpen));
   });
 
   siteNav.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", () => {
-      siteNav.classList.remove("open");
-      navToggle.setAttribute("aria-expanded", "false");
-    });
+    link.addEventListener("click", closeNavMenu);
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      closeNavMenu();
+    }
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!window.matchMedia("(max-width: 1035px)").matches || !siteNav.classList.contains("open")) {
+      return;
+    }
+
+    const target = event.target;
+    if (target instanceof Node && !siteNav.contains(target) && !navToggle.contains(target)) {
+      closeNavMenu();
+    }
+  });
+
+  window.addEventListener("resize", () => {
+    if (!window.matchMedia("(max-width: 1035px)").matches) {
+      closeNavMenu();
+    }
   });
 }
 
@@ -1370,6 +1395,9 @@ if ("IntersectionObserver" in window && sectionLinks.length > 0 && sections.leng
 
   sections.forEach((section) => navObserver.observe(section));
 }
+
+
+
 
 
 
