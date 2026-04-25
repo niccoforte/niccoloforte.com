@@ -32,6 +32,7 @@ export async function POST(request) {
   const email = String(payload?.email || "").trim();
   const message = String(payload?.message || "").trim();
   const company = String(payload?.company || "").trim();
+  const target = String(payload?.target || "work").trim().toLowerCase();
 
   if (company) {
     return jsonResponse({ ok: true });
@@ -43,7 +44,10 @@ export async function POST(request) {
 
   const resendApiKey = process.env.RESEND_API_KEY;
   const fromEmail = process.env.CONTACT_FROM_EMAIL;
-  const toEmail = process.env.CONTACT_TO_EMAIL || "work@niccoloforte.com";
+  const toEmail =
+    target === "personal"
+      ? process.env.CONTACT_TO_PERSONAL_EMAIL || "me@niccoloforte.com"
+      : process.env.CONTACT_TO_WORK_EMAIL || process.env.CONTACT_TO_EMAIL || "work@niccoloforte.com";
 
   if (!resendApiKey || !fromEmail) {
     return jsonResponse({ error: "Email delivery is not configured." }, 500);
@@ -82,3 +86,5 @@ export async function POST(request) {
 
   return jsonResponse({ ok: true });
 }
+
+

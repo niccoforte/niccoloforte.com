@@ -25,7 +25,7 @@ const socialsTriggers = Array.from(document.querySelectorAll("[data-socials-trig
 const socialsModal = document.getElementById("socialsModal");
 const contactForm = document.getElementById("contactForm");
 const contactFormStatus = document.getElementById("contactFormStatus");
-const contactSubmitButton = document.getElementById("contactSubmitButton");
+const contactSubmitButtons = Array.from(document.querySelectorAll("#contactForm button[type=\"submit\"]"));
 const interestModal = document.getElementById("interestModal");
 const interestModalImage = document.getElementById("interestModalImage");
 const interestModalCaption = document.getElementById("interestModalCaption");
@@ -167,13 +167,16 @@ const translations = {
         contactTitle: "Contatti",
         contactIntro:
           "Mi fa sempre piacere entrare in contatto con persone che lavorano su meccanica strutturale, ricerca aerospaziale, metamateriali, software ingegneristico o insegnamento tecnico di qualit�.",
+        contactWorkLabel: "Lavoro",
+        contactPersonalLabel: "Personale",
         contactCardLabel: "Scheda contatto",
         contactFormIntro:
           "Oppure mandami un messaggio senza lasciare questa pagina...",
         formNameLabel: "Nome",
         formEmailLabel: "Indirizzo email",
         formMessageLabel: "Messaggio",
-        formSubmitLabel: "Invia messaggio",
+        formSubmitWorkLabel: "Invia al lavoro",
+        formSubmitPersonalLabel: "Invia al personale",
         formSendingLabel: "Invio in corso...",
         formSuccessMessage: "Grazie per il tuo messaggio. Ti risponder� il prima possibile.",
         formErrorMessage:
@@ -1171,9 +1174,15 @@ const applyLanguage = (language) => {
     );
   }
 
-  if (contactSubmitButton && !contactSubmitButton.disabled) {
-    contactSubmitButton.textContent = getTextTranslation("formSubmitLabel", "Send Message");
-  }
+  contactSubmitButtons.forEach((button) => {
+    if (!button.disabled) {
+      const key = button.value === "personal" ? "formSubmitPersonalLabel" : "formSubmitWorkLabel";
+      button.textContent = getTextTranslation(
+        key,
+        button.value === "personal" ? "Send to Personal" : "Send to Work"
+      );
+    }
+  });
 
   if (shareStatus?.dataset.statusKey) {
     shareStatus.textContent = getTextTranslation(shareStatus.dataset.statusKey, shareStatus.textContent);
@@ -1365,23 +1374,28 @@ if (socialsTriggers.length > 0 && socialsModal) {
   });
 }
 
-if (contactForm && contactFormStatus && contactSubmitButton) {
+if (contactForm && contactFormStatus && contactSubmitButtons.length > 0) {
   contactForm.addEventListener("submit", async (event) => {
     event.preventDefault();
 
+    const submitter = event.submitter;
+    const deliveryTarget =
+      submitter instanceof HTMLButtonElement && submitter.value === "personal" ? "personal" : "work";
     const formData = new FormData(contactForm);
     const payload = {
       name: String(formData.get("name") || "").trim(),
       email: String(formData.get("email") || "").trim(),
       message: String(formData.get("message") || "").trim(),
       company: String(formData.get("company") || "").trim(),
+      target: deliveryTarget,
     };
 
     contactFormStatus.className = "contact-form-status";
     contactFormStatus.dataset.statusKey = "formSendingLabel";
     contactFormStatus.textContent = getTextTranslation("formSendingLabel", "Sending...");
-    contactSubmitButton.disabled = true;
-    contactSubmitButton.textContent = getTextTranslation("formSendingLabel", "Sending...");
+    contactSubmitButtons.forEach((button) => {
+      button.disabled = true;
+    });
 
     try {
       const response = await fetch("/api/contact", {
@@ -1401,22 +1415,27 @@ if (contactForm && contactFormStatus && contactSubmitButton) {
       contactFormStatus.dataset.statusKey = "formSuccessMessage";
       contactFormStatus.textContent = getTextTranslation(
         "formSuccessMessage",
-        "Thank you for your message. I will get back to you as soon as possible."
+        "Thank you for your message. I will get back to you as soon as possible.",
       );
     } catch {
       contactFormStatus.classList.add("is-error");
       contactFormStatus.dataset.statusKey = "formErrorMessage";
       contactFormStatus.textContent = getTextTranslation(
         "formErrorMessage",
-        "I couldn't send your message just now. Please try again in a moment or email me directly."
+        "I couldn't send your message just now. Please try again in a moment or email me directly.",
       );
     } finally {
-      contactSubmitButton.disabled = false;
-      contactSubmitButton.textContent = getTextTranslation("formSubmitLabel", "Send Message");
+      contactSubmitButtons.forEach((button) => {
+        button.disabled = false;
+        const key = button.value === "personal" ? "formSubmitPersonalLabel" : "formSubmitWorkLabel";
+        button.textContent = getTextTranslation(
+          key,
+          button.value === "personal" ? "Send to Personal" : "Send to Work",
+        );
+      });
     }
   });
 }
-
 if (navToggle && siteNav) {
   const closeNavMenu = () => {
     siteNav.classList.remove("open");
@@ -1511,6 +1530,9 @@ if ("IntersectionObserver" in window && sectionLinks.length > 0 && sections.leng
 
   sections.forEach((section) => navObserver.observe(section));
 }
+
+
+
 
 
 

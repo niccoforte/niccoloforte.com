@@ -581,25 +581,28 @@
           </p>
 
           <div class="contact-actions reveal" style="--delay: 80ms">
-            <a class="outline-button" href="mailto:work@niccoloforte.com">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M4 6h16v12H4z" />
-                <path d="m4 7 8 6 8-6" />
-              </svg>
-              work@niccoloforte.com
-            </a>
+            <div class="contact-action-row">
+              <a class="outline-button" href="mailto:work@niccoloforte.com">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M4 6h16v12H4z" />
+                  <path d="m4 7 8 6 8-6" />
+                </svg>
+                <span data-i18n="contactWorkLabel">Work</span>
+              </a>
+              <a class="outline-button" href="mailto:me@niccoloforte.com">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M4 6h16v12H4z" />
+                  <path d="m4 7 8 6 8-6" />
+                </svg>
+                <span data-i18n="contactPersonalLabel">Personal</span>
+              </a>
+            </div>
             <button
               class="outline-button outline-button-muted"
               type="button"
               data-contact-trigger
-              data-i18n="contactCardLabel"
             >
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M4 6h16v12H4z" />
-                <path d="M9 11a3 3 0 1 0 6 0 3 3 0 0 0-6 0Z" />
-                <path d="M7.5 16.5c1.15-1.4 2.68-2.1 4.5-2.1s3.35.7 4.5 2.1" />
-              </svg>
-              Contact Card
+              <span data-i18n="contactCardLabel">Contact Card</span>
             </button>
           </div>
 
@@ -641,8 +644,25 @@
             />
 
             <div class="contact-form-actions">
-              <button class="outline-button" id="contactSubmitButton" type="submit" data-i18n="formSubmitLabel">
-                Send Message
+              <button
+                class="outline-button"
+                id="contactSubmitWorkButton"
+                type="submit"
+                name="deliveryTarget"
+                value="work"
+                data-i18n="formSubmitWorkLabel"
+              >
+                Send to Work
+              </button>
+              <button
+                class="outline-button outline-button-muted"
+                id="contactSubmitPersonalButton"
+                type="submit"
+                name="deliveryTarget"
+                value="personal"
+                data-i18n="formSubmitPersonalLabel"
+              >
+                Send to Personal
               </button>
             </div>
 
@@ -1096,5 +1116,10 @@
     <script src="script.js"></script>
   </body>
 </html>
+
+
+
+
+
 
 
